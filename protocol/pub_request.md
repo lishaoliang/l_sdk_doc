@@ -11,8 +11,8 @@
 ```javascript
 {
   cmd : "hello",
-  llssid : "123456",
-  llauth : "123456"
+  llssid : "",
+  llauth : ""
 }
 ```
 
@@ -36,8 +36,8 @@
 ```javascript
 {
   cmd : "support",
-  llssid : "123456",
-  llauth : "123456"
+  llssid : "",
+  llauth : ""
 }
 ```
 
@@ -61,8 +61,8 @@
 ```javascript
 {
   cmd : "encrypt",
-  llssid : "123456",
-  llauth : "123456"
+  llssid : "",
+  llauth : ""
 }
 ```
 
