@@ -126,7 +126,9 @@
    1. [idx 实时流序号说明](https://github.com/lishaoliang/l_sdk_doc/blob/master/protocol/stream_idx.md)
    2. [fmt 流格式说明](https://github.com/lishaoliang/l_sdk_doc/blob/master/protocol/stream_fmt.md)
 
+
 ### 4. 获取实时流参数
+* 获取默认实时流命令: 'default_stream'
 
 * 请求
 
@@ -165,79 +167,6 @@
     frame_rate : 25,
     bitrate : 4096,
     i_interval : 90
-  }
-}
-```
-
-
-### 5. 设置图像参数
-
-* 请求
-
-```javascript
-{
-  cmd : "set_image",
-  llssid : "123456",
-  llauth : "123456",
-  set_image : {
-    chnn : 0,
-    idx : 0,
-    bright : 128,
-    contrast : 128,
-    saturation : 128,
-    hue : 128
-  }
-}
-```
-
-|   参数    |   默认值   |   备注    |
-|:---------:|:--------- |:--------- |
-| bright    | 128       | 亮度[0,255] |
-| contrast  | 128       | 对比度[0,255] |
-| saturation| 128       | 饱和度[0,255] |
-| hue       | 128       | 色度[0,255] |
-
-* 备注
-   1. 统一约定取值范围[0,255]
-   2. 统一约定128为默认环境下最优设定
-   3. 如果协议约定值与实际设备对应不上, 由各个设备自行处理映射关系
-
-
-* 回复
-
-```javascript
-{
-  cmd : "set_image",
-  set_image : {
-    code : 0
-  }
-}
-```
-
-### 6. 获取图像参数
-* 请求
-
-```javascript
-{
-  cmd : "image",
-  llssid : "123456",
-  llauth : "123456",
-  image : {
-    chnn : 0,
-    idx : 0
-  }
-}
-```
-
-* 回复
-
-```javascript
-{
-  cmd : "image",
-  image : {
-    code : 0,
-    chnn : 0,
-    idx : 0
   }
 }
 ```
