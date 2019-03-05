@@ -52,6 +52,7 @@
   sn : 'YDFE4EFDFESHEDFR',
 
   discover : {
+    name : 'xxx',
     hw_ver : 'h1.0.0',
     sw_ver : 'v1.0.0',
     model : 'wifi-ipc',
@@ -65,11 +66,12 @@
 
 |  值域     | 类型       |   备注    |
 |:---------:|:--------- |:--------- |
+| name      | 字符串     | 用户定义的设备名称(utf8) |
 | hw_ver    | 字符串     | 硬件版本 |
 | sw_ver    | 字符串     | 软件版本 |
 | model     | 字符串     | 型号 |
 | dev_type  | 字符串     | 设备类型 |
-| chnn_max  | 字符串     | 视频最大通道数 |
+| chnn_max  | 数值       | 视频最大通道数 |
 | txt_enc   | 字符串     | 服务端支持的文本加密方式 |
 | md_enc    | 字符串     | 服务端支持的媒体加密方式 |
 
