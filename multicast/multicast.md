@@ -57,7 +57,7 @@
     sw_ver : 'v1.0.0',
     model : 'wifi-ipc',
     dev_type : 'ipc',
-    chnn_max : 1,
+    chnn_num : 1,
     txt_enc : 'base64,xxx',
     md_enc : 'xxx'
   }

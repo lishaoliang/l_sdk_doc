@@ -201,7 +201,10 @@
     code : 0,
     chnn : 0,
     dnr_type : 'none',
-    value : 50
+    value : 50,
+    range : {
+      dnr_type : 'none'
+    }
   }
 }
 ```
@@ -218,7 +221,7 @@
   llauth : '123456',
   set_img_wb : {
     chnn : 0,
-    wb_type : 'none'
+    wb_type : {'none'}
   }
 }
 ```
@@ -256,7 +259,6 @@
   llauth : '123456',
   img_wb : {
     chnn : 0,
-    wb_type : 'none'
   }
 }
 ```
@@ -269,7 +271,10 @@
   img_wb : {
     code : 0,
     chnn : 0,
-    wb_type : 'none'
+    wb_type : 'none',
+    range : {
+      wb_type : {'none'}
+    }
   }
 }
 ```

@@ -19,9 +19,9 @@
 
 |   参数    |   默认值   |   备注    |
 |:---------:|:--------- |:--------- |
-| chnn    | 0         | 通道 |
-| idx     | 0         | 流序号: 主码流,子码流,音频,图片等 |
-| md_id   | 0[可选]   | 媒体id: 用于区分同一个连接中同时请求多份流序号相同的码流; 由客户端决定 |
+| chnn     | 0         | 通道 |
+| idx      | 0         | 流序号: 主码流,子码流,音频,图片等 |
+| md_id    | 0         | 媒体id: 用于区分同一个连接中同时请求多份流序号相同的码流; 由客户端决定 |
 
 * 回复
 
@@ -87,9 +87,8 @@
     chnn : 0,
     idx : 0,
     fmt : 'h264',
-    rc_mode : 'vbr'
-    w : 1920,
-    h : 1080,
+    rc_mode : 'vbr',
+    wh : '1920*1080',
     quality : 'hight',
     frame_rate : 25,
     bitrate : 4096,
@@ -104,8 +103,7 @@
 | idx       | 0         | 实时流序号: 主码流,子码流,音频,图片等 |
 | fmt       | 'h264'    | 编码格式: 'h264','h265','jpeg' |
 | rc_mode   | 'vbr'     | 定码流'cbr',编码流'vbr' |
-| w         | 1920      | 宽度 |
-| h         | 1080      | 高度 |
+| wh        | '1920*1080'| 宽高 |
 | quality   | 'high'    | 图像质量: 'highest', 'higher', 'high','middle','low','lower', 'lowest' |
 | frame_rate| 25        | 帧率[1,30] |
 | bitrate   | 4096      | 码流比特率[128,6M] |
@@ -160,13 +158,30 @@
     chnn : 0,
     idx : 0,
     fmt : 'h264',
-    rc_mode : 'vbr'
-    w : 1920,
-    h : 1080,
+    rc_mode : 'vbr',
+    wh : '1920*1080',
     quality : 'hight',
     frame_rate : 25,
     bitrate : 4096,
-    i_interval : 90
+    i_interval : 90,
+    range : {
+      fmt : {'h264', 'h265'},
+      rc_mode : {'vbr', 'cbr'},
+      wh : {'1920*1080', '1280*720'},
+      quality : {'highest', 'higher', 'high','middle','low','lower', 'lowest'},
+      frame_rate : {
+        min : 1,
+        max : 25
+      },
+      bitrate : {
+        min : 256,
+        max : 6144
+      },
+      i_interval : {
+        min : 25,
+        max : 90
+      }
+    }
   }
 }
 ```

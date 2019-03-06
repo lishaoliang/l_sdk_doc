@@ -6,17 +6,18 @@
 
 ## 网络协议
 ### [1. 通用定义](https://github.com/lishaoliang/l_sdk_doc/blob/master/common/common.md)
-### [2. 批量协议请求](https://github.com/lishaoliang/l_sdk_doc/blob/master/protocol/multi_request.md)
-### [3. 公共请求](https://github.com/lishaoliang/l_sdk_doc/blob/master/protocol/pub_request.md)
-### [4. 权限](https://github.com/lishaoliang/l_sdk_doc/blob/master/protocol/auth_request.md)
-### [5. 用户](https://github.com/lishaoliang/l_sdk_doc/blob/master/protocol/user_request.md)
-### [6. 基本信息](https://github.com/lishaoliang/l_sdk_doc/blob/master/protocol/base_request.md)
-### [7. 网络](https://github.com/lishaoliang/l_sdk_doc/blob/master/protocol/net_request.md)
-### [8. 媒体流](https://github.com/lishaoliang/l_sdk_doc/blob/master/protocol/stream_request.md)
-### [9. 图像参数](https://github.com/lishaoliang/l_sdk_doc/blob/master/protocol/image_request.md)
-### [10. 控制协议](https://github.com/lishaoliang/l_sdk_doc/blob/master/ctrl/sys.md)
-### 11. 推送协议
-### [12. 协议错误码](https://github.com/lishaoliang/l_sdk_doc/blob/master/protocol/net_proto_err.md)
+### [2. 批量协议请求](https://github.com/lishaoliang/l_sdk_doc/blob/master/protocol/multi_req.md)
+### [3. 公共请求](https://github.com/lishaoliang/l_sdk_doc/blob/master/protocol/public.md)
+### [4. 权限](https://github.com/lishaoliang/l_sdk_doc/blob/master/protocol/auth.md)
+### [5. 用户](https://github.com/lishaoliang/l_sdk_doc/blob/master/protocol/user.md)
+### [6. 基本信息](https://github.com/lishaoliang/l_sdk_doc/blob/master/protocol/base.md)
+### [7. 网络](https://github.com/lishaoliang/l_sdk_doc/blob/master/protocol/net.md)
+### [8. 媒体流](https://github.com/lishaoliang/l_sdk_doc/blob/master/protocol/stream.md)
+### [9. 图像参数](https://github.com/lishaoliang/l_sdk_doc/blob/master/protocol/image.md)
+### [10. 配置操作](https://github.com/lishaoliang/l_sdk_doc/blob/master/protocol/config.md)
+### [11. 控制协议](https://github.com/lishaoliang/l_sdk_doc/blob/master/ctrl/sys.md)
+### 12. 推送协议
+### [13. 协议错误码](https://github.com/lishaoliang/l_sdk_doc/blob/master/protocol/net_err.md)
 
 
 ## 组播协议
