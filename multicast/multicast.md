@@ -113,14 +113,14 @@
 }
 ```
 
-### 4. 组播修改Wi-Fi的无线参数
+### 4. 组播修改无线参数
 
 * 未实现
 * 请求
 
 ```javascript
 {
-  cmd : 'set_wifi',
+  cmd : 'set_wireless',
   sn : 'YDFE4EFDFESHEDFR',
 
   login : {
@@ -128,9 +128,9 @@
     passwd : '123456'
   },
 
-  set_wifi : {
-    type : 'router',
-    net : '2.4g',
+  set_wireless : {
+    type : 'sta',
+    net : '5G',
     ssid : 'f701w-cut',
     passwd : '123456',
     enc : 'wpa2-psk'
@@ -146,24 +146,20 @@
 | passwd    | 字符串     | 密码 |
 | enc       | 字符串     | 加密方式 |
 
-* 无线使用方式: 1.'ap'模式,作为热点; 2.'router'模式,作为终端连接到某热点
-* 网络类型:'2.4g','5g','2.4g,5g'
-* 加密方式: 'wpa/wpa2 psk','wpa2 psk','psk','none'
-
 * 回复
 
 ```javascript
 {
-  cmd : 'set_wifi',
+  cmd : 'set_wireless',
   sn : 'YDFE4EFDFESHEDFR',
 
-  set_wifi : {
+  set_wireless : {
     code : 0
   }
 }
 ```
 
-### 5. 组播修改Wi-Fi的IP地址
+### 5. 组播修改无线的IP地址
 
 * 未实现
 * Wi-Fi网口1
@@ -171,7 +167,7 @@
 
 ```javascript
 {
-  cmd : 'set_wifi_ipv4',
+  cmd : 'set_wireless_ipv4',
   sn : 'YDFE4EFDFESHEDFR',
 
   login : {
@@ -179,7 +175,7 @@
     passwd : '123456'
   },
 
-  set_wifi_ipv4 : {
+  set_wireless_ipv4 : {
     dhcp : false,
     ip : '127.0.0.1',
     gateway : '192.168.0.1',
@@ -192,10 +188,10 @@
 
 ```javascript
 {
-  cmd : 'set_wifi_ipv4',
+  cmd : 'set_wireless_ipv4',
   sn : 'YDFE4EFDFESHEDFR',
 
-  set_wifi_ipv4 : {
+  set_wireless_ipv4 : {
     code : 0
   }
 }
