@@ -15,7 +15,7 @@
     gateway : '192.168.7.1',
     netmask : '255.255.255.0',
     dns1 : '192.168.7.1',
-    dns2 : '',
+    dns2 : ''
   }
 }
 ```
@@ -55,7 +55,7 @@
     gateway : '192.168.7.1',
     netmask : '255.255.255.0',
     dns1 : '192.168.7.1',
-    dns2 : '',
+    dns2 : ''
   }
 }
 ```
@@ -71,13 +71,13 @@
   llauth : '123456',
   set_wireless : {
     type : 'sta',
-    net : '5G',
+    net : '5g',
     ssid : 'f701w-cut',
     passwd : '123456',
-    enc : 'wpa2-psk'
+    enc : 'wpa2-psk',
     range : {
       type : {'ap', 'sta'},
-      net : {'2.4G', '5G'},
+      net : {'2.4g', '5g'},
       enc : {'none', 'psk', 'wpa2 psk', 'wpa/wpa2 psk'}
     }
   }
@@ -93,7 +93,7 @@
 | enc       | 字符串     | 加密方式 |
 
 * 无线使用方式: 1.'ap'模式,作为热点; 2.'sta'模式,作为终端连接到某热点
-* 网络类型(仅'ap'模式有效):'2.4G','5G','2.4G,5G'
+* 网络类型(仅'ap'模式有效):'2.4g','5g','2.4g,5g'
 * 加密方式(仅'ap'模式有效): 'wpa/wpa2 psk','wpa2 psk','psk','none'
 
 * 回复
@@ -127,7 +127,7 @@
   wireless : {
     code : 0,
     type : 'sta',
-    net : '5G',
+    net : '5g',
     ssid : 'f701w-cut',
     passwd : '123456',
     enc : 'wpa2-psk'
@@ -159,7 +159,7 @@
     gateway : '192.168.7.1',
     netmask : '255.255.255.0',
     dns1 : '192.168.7.1',
-    dns2 : '',
+    dns2 : ''
   }
 }
 ```

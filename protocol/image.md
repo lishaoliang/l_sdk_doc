@@ -203,7 +203,7 @@
     dnr_type : 'none',
     value : 50,
     range : {
-      dnr_type : 'none'
+      dnr_type : {'none', 'normal'}
     }
   }
 }
