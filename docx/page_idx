@@ -1,0 +1,26 @@
+# 手工编辑 md 文档次序
+# 安装: sudo apt install pandoc
+# 
+
+
+PAGE_IDX_PROTO = ../protocol/head.md \
+				../protocol/common.md \
+				../protocol/multi_req.md \
+				../protocol/public.md \
+				../protocol/auth.md \
+				../protocol/user.md \
+				../protocol/base.md \
+				../protocol/net.md \
+				../protocol/stream.md \
+				../protocol/image.md \
+				../protocol/config.md \
+				../protocol/sys.md \
+				../protocol/net_err.md \
+				../protocol/stream_idx.md \
+				../protocol/stream_fmt.md
+		
+PAGE_IDX_MULTICAST = ../multicast/head.md \
+				../multicast/multicast.md
+
+
+PAGE_ALL = $(PAGE_IDX_PROTO) $(PAGE_IDX_MULTICAST)

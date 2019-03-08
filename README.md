@@ -2,10 +2,8 @@
 
 你可以在[GitHub](https://github.com/lishaoliang/l_sdk_doc/)下载本文档
 
-## l_sdk接口
-
-## 网络协议
-### [1. 通用定义](https://github.com/lishaoliang/l_sdk_doc/blob/master/common/common.md)
+## 一、网络协议
+### [1. 通用定义](https://github.com/lishaoliang/l_sdk_doc/blob/master/protocol/common.md)
 ### [2. 批量协议请求](https://github.com/lishaoliang/l_sdk_doc/blob/master/protocol/multi_req.md)
 ### [3. 公共请求](https://github.com/lishaoliang/l_sdk_doc/blob/master/protocol/public.md)
 ### [4. 权限](https://github.com/lishaoliang/l_sdk_doc/blob/master/protocol/auth.md)
@@ -15,24 +13,18 @@
 ### [8. 媒体流](https://github.com/lishaoliang/l_sdk_doc/blob/master/protocol/stream.md)
 ### [9. 图像参数](https://github.com/lishaoliang/l_sdk_doc/blob/master/protocol/image.md)
 ### [10. 配置操作](https://github.com/lishaoliang/l_sdk_doc/blob/master/protocol/config.md)
-### [11. 控制协议](https://github.com/lishaoliang/l_sdk_doc/blob/master/ctrl/sys.md)
-### 12. 推送协议
-### [13. 协议错误码](https://github.com/lishaoliang/l_sdk_doc/blob/master/protocol/net_err.md)
+### [11. 控制协议](https://github.com/lishaoliang/l_sdk_doc/blob/master/protocol/sys.md)
+### [附录1、错误码](https://github.com/lishaoliang/l_sdk_doc/blob/master/protocol/net_err.md)
+### [附录3、流序号](https://github.com/lishaoliang/l_sdk_doc/blob/master/protocol/stream_idx.md)
+### [附录4、流格式](https://github.com/lishaoliang/l_sdk_doc/blob/master/protocol/stream_fmt.md)
 
-
-## 组播协议
+## 二、组播协议
 ### [1. 基本组播协议](https://github.com/lishaoliang/l_sdk_doc/blob/master/multicast/multicast.md)
 
 
-## HTTP协议
+## 三、SDK接口
 
-## RTSP协议
-
-## Websocket协议
-
-## NSPP私有协议
-
-## 示例
+## 四、示例
 
 
 ## 其他
