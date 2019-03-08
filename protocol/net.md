@@ -32,7 +32,7 @@
 ```
 
 ### 2. 获取有线网口IPv4
-
+* 获取默认时区: 'default_ipv4'
 * 请求
 
 ```javascript
@@ -108,7 +108,7 @@
 ```
 
 ### 4. 获取无线网口参数
-
+* 获取默认时区: 'default_wireless'
 * 请求
 
 ```javascript
@@ -136,7 +136,7 @@
 ```
 
 ### 5. 获取无线网口ipv4
-
+* 获取默认时区: 'default_wireless_ipv4'
 * 请求
 
 ```javascript
@@ -197,6 +197,7 @@
 ```
 
 ### 5. 获取数据服务端口
+* 获取默认时区: 'default_net_port'
 * 暂不支持
 
 * 请求

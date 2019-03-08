@@ -64,7 +64,7 @@
 ```javascript
 {
   cmd : 'name',
-  system : {
+  name : {
     code : 0,
     name : 'xxx'
   }
@@ -143,10 +143,10 @@
 
 ```javascript
 {
-  cmd : 'time',
+  cmd : 'set_time',
   llssid : '123456',
   llauth : '123456',
-  time : {
+  set_time : {
     time : '125487511',
     date : '2019/03/06 08:15:05 GMT+08:00'
   }
@@ -157,8 +157,8 @@
 
 ```javascript
 {
-  cmd : 'time',
-  system : {
+  cmd : 'set_time',
+  set_time : {
     code : 0,
   }
 }

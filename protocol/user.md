@@ -97,7 +97,7 @@
   user_modify : {
     name : 'xxx',
     passwd : 'xxx',
-    type : 'Operator',
+    type : 'operator',
     auth : {
       cfg : true,
       ctrl : true,
@@ -144,14 +144,14 @@
       {
         name : 'xxx',
         passwd : 'xxx',
-        type : 'Operator',
+        type : 'operator',
         auth : {
           cfg : true,
           ctrl : true,
           ctrl_sys : false
         }
         range : {
-          type : {'Operator', 'User'}
+          type : {'operator', 'user'}
         }
       },
       {...},
@@ -219,9 +219,9 @@
 | type      | 字符串(rw)  | 用户类型 |
 
 * 备注
-  1. 'Administrators' 管理员, 仅限'admin'用户
-  2. 'Operator' 操作员
-  3. 'User' 普通用户
+  1. 'administrators' 管理员, 仅限'admin'用户
+  2. 'operator' 操作员
+  3. 'user' 普通用户
 
 * 回复
 
@@ -232,14 +232,14 @@
     code : 0,
     name : 'xxx',
     passwd : 'xxx',
-    type : 'Operator',
+    type : 'operator',
     auth : {
       cfg : true,
       ctrl : true,
       ctrl_sys : false
     }
     range : {
-      type : {'Operator', 'User'}
+      type : {'operator', 'user'}
     }
   }
 }
@@ -265,7 +265,7 @@
   user_online : {
     code : 0,
     users : {
-      { name : 'xxx', type : 'Operator' },
+      { name : 'xxx', type : 'operator' },
       {...},
       {...}
     }
