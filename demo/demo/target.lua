@@ -20,6 +20,11 @@ target.ip = '192.168.3.218'
 target.port = 80
 
 
+-- @name   target.path
+-- @export 目标短连接路径
+target.path = '/luajson'
+
+
 -- @name   target.username
 -- @export 用户名
 target.username = 'admin'
