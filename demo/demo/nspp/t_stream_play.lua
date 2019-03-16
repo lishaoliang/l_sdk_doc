@@ -1,9 +1,9 @@
 --[[
--- Copyright (c) 2019 ÎäººË´Á¢Èí¼ş, All Rights Reserved
+-- Copyright (c) 2019 æ­¦æ±‰èˆœç«‹è½¯ä»¶, All Rights Reserved
 -- Created: 2019/3/6
 --
--- @brief	²âÊÔ»ñÈ¡ÂëÁ÷
--- @author	ÀîÉÜÁ¼
+-- @brief	æµ‹è¯•è·å–ç æµ
+-- @author	æç»è‰¯
 -- @see https://github.com/lishaoliang/l_sdk_doc/blob/master/protocol/stream.md
 --]]
 local l_sys = require("l_sys")
@@ -18,8 +18,8 @@ local login = require("demo.login")
 local open_stream = function (id, chnn, idx)
 	local req = {
 		cmd = 'open_stream',
-		--llssid = '123456',	-- l_sdk×Ô¶¯½«´ËÓò²¹³äÍê³É
-		--llauth = '123456',	-- l_sdk×Ô¶¯½«´ËÓò²¹³äÍê³É
+		--llssid = '123456',	-- l_sdkè‡ªåŠ¨å°†æ­¤åŸŸè¡¥å……å®Œæˆ
+		--llauth = '123456',	-- l_sdkè‡ªåŠ¨å°†æ­¤åŸŸè¡¥å……å®Œæˆ
 		open_stream = {
 			chnn = chnn,
 			idx = idx
@@ -35,15 +35,15 @@ local open_stream = function (id, chnn, idx)
 end
 
 
--- sdk³õÊ¼»¯
+-- sdkåˆå§‹åŒ–
 l_sdk.init('')
 
 
--- µÇÂ¼µ½Éè±¸
+-- ç™»å½•åˆ°è®¾å¤‡
 local err, id = login(target.ip, target.port, target.username, target.passwd)
 
 
--- ´òÓ¡µÇÂ¼½á¹û
+-- æ‰“å°ç™»å½•ç»“æœ
 if 0 ~= err then
 	print('login error!'.. 'err=' .. err,  target.username .. '@' .. target.ip .. ':'..target.port .. ' -p ' .. target.passwd)
 else	
@@ -56,25 +56,25 @@ local idx = 0
 
 local err, res = open_stream(id, chnn, idx);
 if 0 ~= err then
-	print('open stream ok!err='..err)
+	print('open stream error!err='..err)
 	
-	-- ĞİÃß3S
+	-- ä¼‘çœ 3S
 	l_sys.sleep(3000)
 else
 	print('open stream ok!res='..res)
 	
-	--  ÄÚÖÃ²¥·ÅÆ÷,ĞèÒªwinÖ§³ÖOpengl2.0ÒÔÉÏ
-	local dlg = l_sdk.open_wnd()	-- ´ò¿ª´°¿Ú
-	dlg:bind(id, chnn, idx, 0)		-- ½«´°¿Ú°ó¶¨µ½µÇÂ¼id, Í¨µÀ, Á÷ĞòºÅ
-	while dlg:is_run() do			-- ´°¿ÚÊÇ·ñ¹Ø±Õ
+	--  å†…ç½®æ’­æ”¾å™¨,éœ€è¦winæ”¯æŒOpengl2.0ä»¥ä¸Š
+	local dlg = l_sdk.open_wnd()	-- æ‰“å¼€çª—å£
+	dlg:bind(id, chnn, idx, 0)		-- å°†çª—å£ç»‘å®šåˆ°ç™»å½•id, é€šé“, æµåºå·
+	while dlg:is_run() do			-- çª—å£æ˜¯å¦å…³é—­
 		l_sys.sleep(200)
 	end
 	dlg:close()
 end
 
--- µÇ³ö
+-- ç™»å‡º
 l_sdk.logout(id)
 
 
--- sdkÍË³ö
+-- sdké€€å‡º
 l_sdk.quit()
