@@ -2,7 +2,7 @@
 -- Copyright (c) 2019 武汉舜立软件, All Rights Reserved
 -- Created: 2019/3/6
 --
--- @brief	测试获取码流
+-- @brief	测试获取图片流
 -- @author	李绍良
 -- @see https://github.com/lishaoliang/l_sdk_doc/blob/master/protocol/stream.md
 --]]
@@ -52,7 +52,7 @@ end
 
 
 local chnn = 0
-local idx = 0
+local idx = 64	-- 图片流1
 
 local err, res = open_stream(id, chnn, idx);
 if 0 ~= err then
@@ -61,8 +61,22 @@ else
 	print('open stream ok!res='..res)
 end
 
--- 休眠3S
-l_sys.sleep(3000)
+
+local count = 10
+local pic = 1
+while 0 < count do
+	if pic < 10 then
+		if l_sdk.save(id, chnn, idx, 0, 'test_' .. pic .. '.jpg') then
+			print('save pic ok path:'.. 'test_' .. pic .. '.jpg')
+			pic = pic + 1
+		end
+	else
+		break
+	end
+	
+	count = count - 1
+	l_sys.sleep(1000)
+end
 
 
 -- 登出

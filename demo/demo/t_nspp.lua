@@ -14,6 +14,7 @@ local files = {
 	"demo.nspp.t_login",
 	"demo.nspp.t_base",
 	"demo.nspp.t_stream",
+	"demo.nspp.t_stream_pic",
 	"demo.nspp.t_stream_play"
 }
 
