@@ -1,5 +1,11 @@
 --[[
 -- 测试文档简要说明
+-- 基础学习知识:
+-- 1. Lua语言
+--  书籍<<LUA程序设计(第2版)>> 作者: [巴西] 作者:[巴西] 莱鲁 出版社: 电子工业出版社
+--  菜鸟教程: http://www.runoob.com/lua/lua-tutorial.html
+--  Lua 5.3 参考手册: http://www.runoob.com/manual/lua53doc/contents.html#contents
+-- 2. SDK基础文档: https://lishaoliang.github.io/l_sdk_doc/
 
 一. 目录结构
 	./
