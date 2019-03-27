@@ -74,7 +74,7 @@
 }
 ```
 
-### 3. 设置实时流参数
+### 3. 设置实时视频流参数
 
 * 请求
 
@@ -89,7 +89,7 @@
     fmt : 'h264',
     rc_mode : 'vbr',
     wh : '1920*1080',
-    quality : 'hight',
+    quality : 'high',
     frame_rate : 25,
     bitrate : 4096,
     i_interval : 90
@@ -100,14 +100,14 @@
 |   参数    |   默认值   |   备注    |
 |:---------:|:--------- |:--------- |
 | chnn      | 0         | 通道 |
-| idx       | 0         | 实时流序号: 主码流,子码流,音频,图片等 |
-| fmt       | 'h264'    | 编码格式: 'h264','h265','jpeg' |
+| idx       | 0         | 实时流序号: 主码流,子码流 |
+| fmt       | 'h264'    | 编码格式: 'h264','h265' |
 | rc_mode   | 'vbr'     | 定码流'cbr',编码流'vbr' |
 | wh        | '1920*1080'| 宽高 |
 | quality   | 'high'    | 图像质量: 'highest', 'higher', 'high','middle','low','lower', 'lowest' |
-| frame_rate| 25        | 帧率[1,30] |
-| bitrate   | 4096      | 码流比特率[128,6M] |
-| i_interval| 90        | I帧间隔[25,90] |
+| frame_rate| 25        | 帧率[1,30](秒) |
+| bitrate   | 4096      | 码流比特率[128,6144](Kbps) |
+| i_interval| 90        | I帧间隔[25,90](帧数) |
 
 * 回复
 
@@ -125,7 +125,7 @@
    2. [fmt 流格式说明](https://github.com/lishaoliang/l_sdk_doc/blob/master/protocol/stream_fmt.md)
 
 
-### 4. 获取实时流参数
+### 4. 获取实时视频流参数
 * 获取默认实时流命令: 'default_stream'
 
 * 请求
@@ -180,6 +180,95 @@
       i_interval : {
         min : 25,
         max : 90
+      }
+    }
+  }
+}
+```
+
+### 4. 设置图片流参数
+
+* 请求
+
+```javascript
+{
+  cmd : "set_stream_pic",
+  llssid : "123456",
+  llauth : "123456",
+  set_stream_pic : {
+    chnn : 0,
+    idx : 64,
+    fmt : 'jpeg',
+    wh : '4000*3000',
+    quality : 'high',
+    interval_ms : 333
+  }
+}
+```
+
+|   参数    |   默认值   |   备注    |
+|:---------:|:--------- |:--------- |
+| chnn      | 0         | 通道 |
+| idx       | 64        | 图片流1, 图片流2 |
+| fmt       | 'jpeg'    | 编码格式: 'jpeg' |
+| wh        | '4000*3000'| 宽高 |
+| quality   | 'high'    | 图像质量: (暂无效) |
+| interval_ms | 333      | 图片流间隔(毫秒) |
+
+* 回复
+
+```javascript
+{
+  cmd : "set_stream_pic",
+  set_stream_pic : {
+    code : 0
+  }
+}
+```
+
+### 5. 获取实时视频流参数
+* 获取默认实时流命令: 'default_stream_pic'
+
+* 请求
+
+```javascript
+{
+  cmd : "stream_pic",
+  llssid : "123456",
+  llauth : "123456",
+  stream_pic : {
+    chnn : 0,
+    idx : 64
+  }
+}
+```
+
+|   参数    |   默认值   |   备注    |
+|:---------:|:--------- |:--------- |
+| chnn      | 0         | 通道 |
+| idx       | 64        | 图片流1,图片流2 |
+
+
+* 回复
+
+```javascript
+{
+  cmd : "stream_pic",
+  stream_pic : {
+    code : 0,
+    chnn : 0,
+    idx : 64,
+    fmt : 'jpeg',
+    wh : '4000*3000',
+    quality : 'high',
+    interval_ms : 333,
+    range : {
+      fmt : 'jpeg',
+      wh : {'4000*3000', '1920*1080'},
+      quality : {'highest', 'higher', 'high','middle','low','lower', 'lowest'},
+      interval_ms : {
+        min : 333,
+        max : 3600000
       }
     }
   }

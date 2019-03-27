@@ -36,12 +36,12 @@ target.passwd = '123456'
 
 
 -- @name   target.wifi_ssid
--- @export 默认wifi的ssid名称
+-- @export 相机处于STA模式下,待连接的目标wifi的ssid名称
 target.wifi_ssid = 'HUAWEI-7NLNPF_5G'
 
 
 -- @name   target.wifi_passwd
--- @export 默认wifi的密码
+-- @export 相机处于STA模式下,待连接的目标wifi的密码
 target.wifi_passwd = 'qwertyuiop1234567890'
 
 
