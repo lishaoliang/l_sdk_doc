@@ -26,6 +26,9 @@
 		t_login.lua		-- 测试登录到设备
 		
 		t_m_stream_play.lua		-- 测试极限拉取多路码流, 播放一路码流
+		t_set_image.lua			-- 测试设置图像参数
+		t_set_stream.lua		-- 测试设置码流参数
+		t_set_stream_pic.lua	-- 测试设置图片流参数
 		t_stream.lua			-- 测试拉取一路码流,只拉取流不播放
 		t_stream_pic.lua		-- 测试拉取图片流, 并保存成文件
 		t_stream_play.lua		-- 测试拉取一路码流, 播放一路码流
