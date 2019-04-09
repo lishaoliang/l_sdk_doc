@@ -26,13 +26,17 @@
 		t_login.lua		-- 测试登录到设备
 		
 		t_m_stream_play.lua		-- 测试极限拉取多路码流, 播放一路码流
+		t_set_dhcp.lua			-- 测试设置有线网口为dhcp自动获取IP
 		t_set_image.lua			-- 测试设置图像参数
+		t_set_ipv4.lua			-- 测试设置有线网口为静态IP地址
 		t_set_stream.lua		-- 测试设置码流参数
 		t_set_stream_pic.lua	-- 测试设置图片流参数
 		t_stream.lua			-- 测试拉取一路码流,只拉取流不播放
 		t_stream_pic.lua		-- 测试拉取图片流, 并保存成文件
 		t_stream_play.lua		-- 测试拉取一路码流, 播放一路码流
 		t_wireless_set_ap.lua	-- 测试设置设备的无线为 "AP"模式(即将设备作为热点)
+		t_wireless_set_dhcp.lua	-- 测试设备在"STA"模式下时, 修改无线为dhcp自动获取IP地址
+		t_wireless_set_ipv4.lua	-- 测试设备在"STA"模式下时, 修改无线为静态IP地址
 		t_wireless_set_sta.lua	-- 测试设置设备的无线为 "STA"模式(即将设备作为终端连接到wifi路由器)
 		
 

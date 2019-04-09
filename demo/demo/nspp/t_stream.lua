@@ -1,9 +1,9 @@
 --[[
--- Copyright (c) 2019 æ­¦æ±‰èˆœç«‹è½¯ä»¶, All Rights Reserved
+-- Copyright (c) 2019 ÎäººË´Á¢Èí¼ş, All Rights Reserved
 -- Created: 2019/3/6
 --
--- @brief	æµ‹è¯•è·å–ç æµ
--- @author	æç»è‰¯
+-- @brief	²âÊÔ»ñÈ¡ÂëÁ÷
+-- @author	ÀîÉÜÁ¼
 -- @see https://github.com/lishaoliang/l_sdk_doc/blob/master/protocol/stream.md
 --]]
 local l_sys = require("l_sys")
@@ -18,8 +18,8 @@ local login = require("demo.login")
 local open_stream = function (id, chnn, idx)
 	local req = {
 		cmd = 'open_stream',
-		--llssid = '123456',	-- l_sdkè‡ªåŠ¨å°†æ­¤åŸŸè¡¥å……å®Œæˆ
-		--llauth = '123456',	-- l_sdkè‡ªåŠ¨å°†æ­¤åŸŸè¡¥å……å®Œæˆ
+		--llssid = '123456',	-- l_sdk×Ô¶¯½«´ËÓò²¹³äÍê³É
+		--llauth = '123456',	-- l_sdk×Ô¶¯½«´ËÓò²¹³äÍê³É
 		open_stream = {
 			chnn = chnn,
 			idx = idx
@@ -35,15 +35,15 @@ local open_stream = function (id, chnn, idx)
 end
 
 
--- sdkåˆå§‹åŒ–
+-- sdk³õÊ¼»¯
 l_sdk.init('')
 
 
--- ç™»å½•åˆ°è®¾å¤‡
+-- µÇÂ¼µ½Éè±¸
 local err, id = login(target.ip, target.port, target.username, target.passwd)
 
 
--- æ‰“å°ç™»å½•ç»“æœ
+-- ´òÓ¡µÇÂ¼½á¹û
 if 0 ~= err then
 	print('login error!'.. 'err=' .. err,  target.username .. '@' .. target.ip .. ':'..target.port .. ' -p ' .. target.passwd)
 else	
@@ -61,13 +61,13 @@ else
 	print('open stream ok!res='..res)
 end
 
--- ä¼‘çœ 3S
+-- ĞİÃß3S
 l_sys.sleep(3000)
 
 
--- ç™»å‡º
+-- µÇ³ö
 l_sdk.logout(id)
 
 
--- sdké€€å‡º
+-- sdkÍË³ö
 l_sdk.quit()

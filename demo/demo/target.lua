@@ -12,7 +12,7 @@ local target = {}
 
 -- @name   target.ip
 -- @export Ä¿±êIPµØÖ·
-target.ip = '192.168.3.218'
+target.ip = '192.168.1.247'
 
 
 -- @name   target.port

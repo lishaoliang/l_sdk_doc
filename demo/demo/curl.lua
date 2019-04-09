@@ -6,7 +6,8 @@
 -- @author	¿Ó…‹¡º
 --]]
 local string = require("string")
-local sh = require("l_sys").sh
+local l_sys = require("l_sys")
+local sh = l_sys.sh
 
 local to_json =  require("demo.to_json")
 
