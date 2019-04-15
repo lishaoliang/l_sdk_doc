@@ -18,8 +18,8 @@
 ### [附录3、流序号](https://github.com/lishaoliang/l_sdk_doc/blob/master/protocol/stream_idx.md)
 ### [附录4、流格式](https://github.com/lishaoliang/l_sdk_doc/blob/master/protocol/stream_fmt.md)
 
-## 二、组播协议
-### [1. 基本组播协议](https://github.com/lishaoliang/l_sdk_doc/blob/master/multicast/multicast.md)
+## 二、网络发现
+### [1. 私有网络发现协议](https://github.com/lishaoliang/l_sdk_doc/blob/master/multicast/multicast.md)
 
 
 ## 三、SDK接口
