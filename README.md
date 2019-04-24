@@ -26,7 +26,8 @@
 ### [1. 私有网络发现协议](https://github.com/lishaoliang/l_sdk_doc/blob/master/multicast/multicast.md)
 
 
-## 五、文件传输子协议
+## 五、升级子协议
+### [1. 客户端请求服务端升级](https://github.com/lishaoliang/l_sdk_doc/blob/master/upgrade/upgrade.md)
 
 ## 示例
 
