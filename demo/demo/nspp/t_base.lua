@@ -34,12 +34,20 @@ local req_name = {
 	cmd = 'name, default_name'
 }
 
-local err, res = l_sdk.request(id, to_json(req_name))
-print('request name, ret='..err, 'res='..res)
+local ret, res = l_sdk.request(id, to_json(req_name))
+print('request name, ret='..ret, 'res='..res)
 
 
--- ÐÝÃß3S
-l_sys.sleep(3000)
+local req_system = {
+	cmd = 'system'
+}
+
+local ret, res = l_sdk.request(id, to_json(req_system))
+print('request system, ret='..ret, 'res='..res)
+
+
+-- ÐÝÃß1S
+l_sys.sleep(1000)
 
 
 -- µÇ³ö

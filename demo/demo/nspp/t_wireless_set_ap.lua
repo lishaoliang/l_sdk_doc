@@ -39,7 +39,7 @@ local set_sta = {
 		net = '5g', -- '2.4g' '5g'
 		ssid = target.wifi_ssid, --'HUAWEI-7NLNPF_5G',
 		passwd = target.wifi_passwd, --'qwertyuiop1234567890',
-		enc = 'wpa2-psk'
+		enc = 'wpa2 psk'
 	}
 }
 

@@ -1,8 +1,22 @@
 --[[
 -- 测试文档简要说明
+-- 
+-- 升级包介绍
+--		*update					USB升级包
+--		*update_v1.0.7.lpk		网络升级包
+--		*update.txt				升级包简易描述: 
+--			"hw_ver = h1.0.7"	文件系统版本
+--			"sw_ver = v1.0.7"	软件版本
+--			"build_time = *"	编译时间, 
+--			"*update (md5) = *"	USB升级包文件的md5值
+--			"*update_v1.0.7.lpk (md5) = *"	网络升级包的md5值
+--		软件功能.xlsx			当前版本主要功能
+-- 软件包是否损坏确认方法：Hash.exe工具, 对比文件md5值
 
 一. 目录结构
 	./
+		Hash.exe		-- md5, sha1等文件校验工具
+		md5sums.exe		-- win平台命令行md5计算
 		llua.exe		-- 测试主执行程序
 		curl.exe		-- 第三方工具: http/https
 		l_sdk.dll		-- sdk库
@@ -34,6 +48,8 @@
 		t_stream.lua			-- 测试拉取一路码流,只拉取流不播放
 		t_stream_pic.lua		-- 测试拉取图片流, 并保存成文件
 		t_stream_play.lua		-- 测试拉取一路码流, 播放一路码流
+		t_upgrade.lua			-- 测试升级指定的设备,指定的版本
+		t_upgrade_auto.lua		-- 测试升级: 从局域网自动搜索设备, 自动搜索指定目录的升级包, 自动升级
 		t_wireless_set_ap.lua	-- 测试设置设备的无线为 "AP"模式(即将设备作为热点)
 		t_wireless_set_dhcp.lua	-- 测试设备在"STA"模式下时, 修改无线为dhcp自动获取IP地址
 		t_wireless_set_ipv4.lua	-- 测试设备在"STA"模式下时, 修改无线为静态IP地址
@@ -65,7 +81,7 @@
 四. 发现局域网络设备, 执行命令: llua.exe ./demo/nspp/t_discover.lua 
 	将会看到如下打印:
 	multicast get devs:     {}
-	multicast get devs:     {***}
+	multicast get devs:     [{"sn":"YDFE4EFDFESHEDFR","discover":{"mac":"00:13:09:FE:45:78","mac_wireless":"00:13:09:FE:45:79","name":"IPC","dev_type":"ipc","txt_enc":"","model":"wifi-ipc","port":80,"chnn_num":1,"sw_ver":"v1.0.7","hw_ver":"h1.0.7","md_enc":""},"ip":"192.168.1.247"}]
 	
 
 五. 测试登录到设备, 执行命令: llua.exe ./demo/nspp/t_login.lua
@@ -104,6 +120,23 @@
 
 十. 批量测试命令: llua.exe ./demo/t_nspp.lua
 	将执行各个测试脚本		
-		
-		
+
+十一. 升级:
+	先修改升级包实际存放的路径
+	llua.exe ./demo/nspp/t_upgrade.lua
+	
+	将会看到如下打印: 
+	request upgrade:        0       {"cmd":"upgrade","upgrade":{"code":0}}
+	status_upgrade: doing   1.0
+	status_upgrade: doing   11.0
+	status_upgrade: doing   21.0
+	status_upgrade: doing   31.0
+	status_upgrade: doing   41.0
+	status_upgrade: doing   51.0
+	status_upgrade: doing   61.0
+	status_upgrade: doing   71.0
+	status_upgrade: doing   81.0
+	status_upgrade: doing   90.0
+	status_upgrade: done    100.0	
+
 --]]
