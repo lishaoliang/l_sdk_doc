@@ -6,7 +6,7 @@
 ### [1. 基本接口](https://github.com/lishaoliang/l_sdk_doc/blob/master/sdk/l_sdk.md)
 ### [2. 访问媒体数据](https://github.com/lishaoliang/l_sdk_doc/blob/master/sdk/l_sdk_media.md)
 ### [3. 网络发现](https://github.com/lishaoliang/l_sdk_doc/blob/master/sdk/l_sdk_discover.md)
-### [4. 升级协议](https://github.com/lishaoliang/l_sdk_doc/blob/master/sdk/l_sdk_upgrade.md)
+### [4. 设备升级](https://github.com/lishaoliang/l_sdk_doc/blob/master/sdk/l_sdk_upgrade.md)
 
 
 ## 二、NSPP协议概述
