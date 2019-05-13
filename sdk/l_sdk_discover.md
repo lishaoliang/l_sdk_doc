@@ -22,8 +22,10 @@ L_SDK_API int l_sdk_discover_get_devs(char** p_devs);
 ### 1. 示例
 * 可以l_sdk_discover_open之后,使用一段时间之后再l_sdk_discover_close
 * 调用l_sdk_discover_run(true)函数之后,会向局域网发送组播/广播搜索请求,不需要搜索功能时,需要调用l_sdk_discover_run(false)关闭
+* 伪代码如下
 
 ```
+  l_sdk_init('');
   l_sdk_discover_open('');
   l_sdk_discover_run(true);
 
@@ -42,4 +44,5 @@ L_SDK_API int l_sdk_discover_get_devs(char** p_devs);
 
   l_sdk_discover_run(false);
   l_sdk_discover_close();
+  l_sdk_quit();
 ```
