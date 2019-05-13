@@ -20,6 +20,8 @@ L_SDK_API int l_sdk_discover_get_devs(char** p_devs);
 ```
 
 ### 1. 示例
+* 可以l_sdk_discover_open之后,使用一段时间之后再l_sdk_discover_close
+* 调用l_sdk_discover_run(true)函数之后,会向局域网发送组播/广播搜索请求,不需要搜索功能时,需要调用l_sdk_discover_run(false)关闭
 
 ```
   l_sdk_discover_open('');
@@ -27,7 +29,7 @@ L_SDK_API int l_sdk_discover_get_devs(char** p_devs);
 
   sleep(2);
 
-  char* p_devs = NULL
+  char* p_devs = NULL;
   if (0 == l_sdk_discover_get_devs(&p_devs))
   {
     printf(p_devs);
