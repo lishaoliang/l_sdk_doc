@@ -9,5 +9,11 @@
     <ClCompile Include="..\stream\t_stream.c">
       <Filter>stream</Filter>
     </ClCompile>
+    <ClCompile Include="..\stream\t_stream_dec.c">
+      <Filter>stream</Filter>
+    </ClCompile>
+    <ClCompile Include="..\stream\main.c">
+      <Filter>stream</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

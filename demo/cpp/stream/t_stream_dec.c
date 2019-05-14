@@ -1,10 +1,13 @@
 ﻿#include <stdio.h>
+#include <assert.h>
 #include "l_sdk.h"
 #include "proto/l_nspp.h"
 #include "proto/l_net.h"
 #include "proto/l_media.h"
 #include "proto/l_md_buf.h"
 
+
+#define T_STREAM_DEC_ID         100
 
 #ifdef __L_WIN__
 #include <windows.h>
@@ -44,7 +47,7 @@ static int cb_sdk_media(void* p_obj, int protocol, int id, int chnn, int idx, in
 
     if (p_data->ver == L_MD_F_VER)
     {
-        printf("fmt:%d,type:%d,len:%d\n", p_data->f_v1.fmt, p_data->f_v1.v_type, p_data->f_v1.len);
+        //printf("fmt:%d,type:%d,len:%d\n", p_data->f_v1.fmt, p_data->f_v1.v_type, p_data->f_v1.len);
 
         if (L_FMT_H264 == p_data->f_v1.fmt)
         {
@@ -61,7 +64,7 @@ static int cb_sdk_media(void* p_obj, int protocol, int id, int chnn, int idx, in
             int h264_len = p_data->f_v1.len;
             unsigned char* p_h264 = p_data->p_buf + p_data->start;
 
-            printf("h264 [%x,%x,%x,%x,%x]\n", p_h264[0], p_h264[1], p_h264[2], p_h264[3], p_h264[4]);
+            //printf("h264 [%x,%x,%x,%x,%x]\n", p_h264[0], p_h264[1], p_h264[2], p_h264[3], p_h264[4]);
         }
         else if (L_FMT_H265 == p_data->f_v1.fmt)
         {
@@ -97,7 +100,7 @@ static int request_stream(id, chnn, idx)
     return 0;
 }
 
-int t_stream_main(int argc, char *argv[])
+int t_stream_dec_main(int argc, char *argv[])
 {
     // win socket环境
     wsa_startup();
@@ -110,6 +113,9 @@ int t_stream_main(int argc, char *argv[])
     // 添加媒体数据监听者
     l_sdk_md_add_listener("my listener 1", cb_sdk_media, NULL);
 
+    // 打开一个解码器
+    ret = l_sdk_dec_open(T_STREAM_DEC_ID, "");
+    printf("(%s.%d)sdk dec open,ret=%d\n", __FILE__, __LINE__, ret);
 
     // 请求登录
     char req_login[128] = { 0 };
@@ -124,15 +130,35 @@ int t_stream_main(int argc, char *argv[])
         // 登录成功, 后请求流
         request_stream(id, 0, 0);
 
+        // 绑定解码器
+        l_sdk_dec_bind(T_STREAM_DEC_ID, id, 0, 0, 0);
+
         // 
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 10000; i++)
         {
-            Sleep(1000);
+            l_md_data_t* p_md_data = NULL;
+            if (0 == l_sdk_dec_get_md_data(T_STREAM_DEC_ID, &p_md_data))
+            {
+                assert(NULL != p_md_data);                
+                if (NULL != p_md_data)
+                {
+                    // L_MDDT_YUV420P_SEPARATE
+                    printf("type:%d, wh:[%d.%d], ptr yuv:[0x%p,0x%p,0x%p]\n", p_md_data->type, p_md_data->w, p_md_data->h, 
+                        p_md_data->p_y, p_md_data->p_u, p_md_data->p_v);
+
+                    l_sdk_dec_free_md_data(p_md_data);
+                }
+            }
+
+            Sleep(15);  // 30帧图像, 最少保持 1000 / 30 / 2
         }
     }
 
     // 请求登出
     l_sdk_logout(id);
+
+    // 关闭解码器
+    l_sdk_dec_close(T_STREAM_DEC_ID);
 
     // sdk退出
     l_sdk_quit();
