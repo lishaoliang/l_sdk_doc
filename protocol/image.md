@@ -213,17 +213,20 @@
 
 
 ### 7. 设置图像白平衡
-* 不支持
 * 请求
 
 ```javascript
 {
-  cmd : 'set_img_wb',
+  cmd : 'set_img_awb',
   llssid : '123456',
   llauth : '123456',
-  set_img_wb : {
+  set_img_awb : {
     chnn : 0,
-    wb_type : {'none'}
+    awb : 'none',
+    b : 0,
+    gb : 0,
+    gr : 0,
+    r : 0
   }
 }
 ```
@@ -231,37 +234,35 @@
 |   参数    |    类型   |   默认值  |   备注    |
 |:---------:|:-------- |:--------- |:--------- |
 | chnn      | 数值      | 0         | 通道 |
-| wb_type   | 字符串    | 'none'    | 无白平衡'none' |
-
-* 备注
-  1. 白平衡类型
-  2.
-
+| awb       | 字符串    | 'none'    | 无白平衡'none' |
+| b         | 数值      | 0         | B gain |
+| gb        | 数值      | 0         | Gb gain |
+| gr        | 数值      | 0         | Gr gain |
+| r         | 数值      | 0         | R gain |
 
 * 回复
 
 ```javascript
 {
-  cmd : 'set_img_wb',
-  set_img_wb : {
+  cmd : 'set_img_awb',
+  set_img_awb : {
     code : 0
   }
 }
 ```
 
 ### 8. 获取图像白平衡
-* 不支持
-* 获取默认图像白平衡: 'default_img_wb'
+* 获取默认图像白平衡: 'default_img_awb'
 
 * 请求
 
 ```javascript
 {
-  cmd : 'img_wb',
+  cmd : 'img_awb',
   llssid : '123456',
   llauth : '123456',
-  img_wb : {
-    chnn : 0,
+  img_awb : {
+    chnn : 0
   }
 }
 ```
@@ -270,13 +271,97 @@
 
 ```javascript
 {
-  cmd : 'img_wb',
-  img_wb : {
+  cmd : 'img_awb',
+  img_awb : {
     code : 0,
     chnn : 0,
-    wb_type : 'none',
+    awb : 'none',
+    b : 0,
+    gb : 0,
+    gr : 0,
+    r : 0
     range : {
-      wb_type : {'none'}
+      awb : {'none', 'auto', 'manual'}
+      b : {
+        min : 0,
+        max : 4095
+      },
+      gb : {
+        min : 0,
+        max : 4095
+      },
+      gr : {
+        min : 0,
+        max : 4095
+      },
+      r : {
+        min : 0,
+        max : 4095
+      }
+    }
+  }
+}
+```
+
+* awb = 'none' : 无白平衡
+* awb = 'auto' : 自动白平衡
+* awb = 'manual' : 手动白平衡, 手动设置 'b', 'gb', 'gr', 'r'
+
+
+### 9. 设置图像旋转
+
+* 请求
+
+```javascript
+{
+  cmd : 'set_img_rotate',
+  llssid : '123456',
+  llauth : '123456',
+  set_img_rotate : {
+    chnn : 0,
+    rotate : 0
+  }
+}
+```
+
+* 回复
+
+```javascript
+{
+  cmd : 'set_img_rotate',
+  set_img_rotate : {
+    code : 0
+  }
+}
+```
+
+
+### 10. 获取图像旋转
+* 获取默认图像旋转: 'default_img_rotate'
+* 请求
+
+```javascript
+{
+  cmd : 'img_rotate',
+  llssid : '123456',
+  llauth : '123456',
+  img_rotate : {
+    chnn : 0
+  }
+}
+```
+
+* 回复
+
+```javascript
+{
+  cmd : 'img_rotate',
+  img_rotate : {
+    code : 0,
+    chnn : 0,
+    rotate : 0,
+    range : {
+      rotate : {0, 180}
     }
   }
 }
