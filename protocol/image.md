@@ -222,11 +222,11 @@
   llauth : '123456',
   set_img_awb : {
     chnn : 0,
-    awb : 'none',
-    b : 0,
-    gb : 0,
-    gr : 0,
-    r : 0
+    awb : 'auto',
+    b : 2047,
+    gb : 2047,
+    gr : 2047,
+    r : 2047
   }
 }
 ```
@@ -234,11 +234,11 @@
 |   参数    |    类型   |   默认值  |   备注    |
 |:---------:|:-------- |:--------- |:--------- |
 | chnn      | 数值      | 0         | 通道 |
-| awb       | 字符串    | 'none'    | 无白平衡'none' |
-| b         | 数值      | 0         | B gain |
-| gb        | 数值      | 0         | Gb gain |
-| gr        | 数值      | 0         | Gr gain |
-| r         | 数值      | 0         | R gain |
+| awb       | 字符串    | 'auto'    | 自动白平衡'auto' |
+| b         | 数值      | 2047      | B gain |
+| gb        | 数值      | 2047      | Gb gain |
+| gr        | 数值      | 2047      | Gr gain |
+| r         | 数值      | 2047      | R gain |
 
 * 回复
 
@@ -275,13 +275,13 @@
   img_awb : {
     code : 0,
     chnn : 0,
-    awb : 'none',
-    b : 0,
-    gb : 0,
-    gr : 0,
-    r : 0
+    awb : 'auto',
+    b : 2047,
+    gb : 2047,
+    gr : 2047,
+    r : 2047,
     range : {
-      awb : {'none', 'auto', 'manual'}
+      awb : {'auto', 'manual'}
       b : {
         min : 0,
         max : 4095
@@ -303,7 +303,6 @@
 }
 ```
 
-* awb = 'none' : 无白平衡
 * awb = 'auto' : 自动白平衡
 * awb = 'manual' : 手动白平衡, 手动设置 'b', 'gb', 'gr', 'r'
 
