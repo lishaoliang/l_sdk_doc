@@ -18,7 +18,7 @@ local to_json =  require("demo.to_json")
 
 
 local force_upgrade = true						-- 是否强制升级, 不管版本是否相同
-local path_lpk = 'Z:/work/ipc_my/l_dev/main'	-- 升级包路径	
+local path_lpk = 'D:/work/ipc_my/l_dev/main'	-- 升级包路径	
 
 
 

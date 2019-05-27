@@ -16,7 +16,7 @@ local to_json =  require("demo.to_json")
 
 
 
-local path_lpk = 'Z:/work/ipc_my/l_dev/main/f701w_update_v1.0.7.lpk'
+local path_lpk = 'D:/work/ipc_my/l_dev/main/f701w_update_v1.0.8.lpk'
 
 
 -- sdk≥ı ºªØ

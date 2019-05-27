@@ -47,7 +47,7 @@ local set_stream_1080P = function (id, chnn, idx)
 			wh = '1920*1080',	-- '1920*1080','1280*720'
 			--wh = '1280*720',
 			quality = 'high',
-			frame_rate = 30,	-- [1,30]
+			frame_rate = 25,	-- [1,25]
 			bitrate = 6144,		-- [128, 6144] Kbps
 			i_interval = 50		-- [25, 90]
 		}
@@ -74,7 +74,7 @@ local set_stream_720P = function (id, chnn, idx)
 			--wh = '1920*1080',	-- '1920*1080','1280*720'
 			wh = '1280*720',	-- '1920*1080','1280*720'
 			quality = 'high',
-			frame_rate = 30,	-- [1,30]
+			frame_rate = 25,	-- [1,25]
 			bitrate = 3096,		-- [128, 6144]
 			i_interval = 50		-- [25, 90]
 		}
