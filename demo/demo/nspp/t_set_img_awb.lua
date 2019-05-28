@@ -10,7 +10,7 @@ local tostring = tostring
 local string = require("string")
 local l_sys = require("l_sys")
 local l_sdk = require("l_sdk")
-local cjson = require("cjson.safe")
+local cjson = require("cjson")
 
 
 local target = require("demo.target")
@@ -47,10 +47,10 @@ local t_get_img_awb = function (id, chnn)
 	local ret, res = l_sdk.request(id, to_json(req))
 	print('request get img_awb,ret=' .. ret, 'res='..res)
 
-	local dec = cjson.decode(res)
+	local dec, obj = pcall(cjson.decode, res)
 	
 	local E = {}
-	return ((dec or E).img_awb or E).awb
+	return ((obj or E).img_awb or E).awb
 end
 
 -- …Ë÷√∞◊∆Ω∫‚…Ë÷√
