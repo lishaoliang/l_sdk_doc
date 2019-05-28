@@ -42,6 +42,10 @@
 		t_m_stream_play.lua		-- 测试极限拉取多路码流, 播放一路码流
 		t_set_dhcp.lua			-- 测试设置有线网口为dhcp自动获取IP
 		t_set_image.lua			-- 测试设置图像参数
+		t_set_img_awb.lua		-- 测试设置图像白平衡
+		t_set_img_flip.lua		-- 测试设置图像垂直翻转
+		t_set_img_mirror.lua	-- 测试设置图像水平镜像
+		t_set_img_rotate.lua	-- 测试设置图像旋转
 		t_set_ipv4.lua			-- 测试设置有线网口为静态IP地址
 		t_set_stream.lua		-- 测试设置码流参数
 		t_set_stream_pic.lua	-- 测试设置图片流参数

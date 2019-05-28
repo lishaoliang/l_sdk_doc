@@ -2,7 +2,7 @@
 -- Copyright (c) 2019 Œ‰∫∫À¥¡¢»Ìº˛, All Rights Reserved
 -- Created: 2019/5/20
 --
--- @brief	≤‚ ‘…Ë÷√ÕºœÒ–˝◊™
+-- @brief	≤‚ ‘…Ë÷√ÕºœÒÀÆ∆ΩæµœÒ
 -- @author	¿Ó…‹¡º
 -- @see https://github.com/lishaoliang/l_sdk_doc/blob/master/protocol/image.md
 --]]
@@ -32,52 +32,48 @@ else
 	print('login ok!'.. 'id=' .. id, target.username .. '@' .. target.ip .. ':'..target.port)
 end
 
-local t_get_img_rotate = function (id, chnn)
+local t_get_img_mirror = function (id, chnn)
 		local req = {
-		cmd = 'img_rotate',
+		cmd = 'img_mirror_flip',
 		--llssid = '123456',
 		--llauth = '123456',
-		img_rotate = {
+		img_mirror_flip = {
 			chnn = chnn	-- 0
 		}
 	}
 	
 	local ret, res = l_sdk.request(id, to_json(req))
-	print('request get img_rotate,ret=' .. ret, 'res='..res)
+	print('request get img_mirror_flip,ret=' .. ret, 'res='..res)
 
 	local dec, obj = pcall(cjson.decode, res)
 	
 	local E = {}
-	return ((obj or E).img_rotate or E).rotate
+	return ((obj or E).img_mirror_flip or E).mirror
 end
 
 
-local t_set_img_rotate = function (id, chnn, rotate)
+local t_set_img_mirror = function (id, chnn, mirror)
 	local req = {
-		cmd = 'set_img_rotate',
+		cmd = 'set_img_mirror_flip',
 		--llssid = '123456',
 		--llauth = '123456',
-		set_img_rotate = {
+		set_img_mirror_flip = {
 			chnn = chnn,		-- 0
-			rotate = rotate		-- 0, 180
+			--flip = false,
+			mirror = mirror		-- true, false
 		}
 	}
 	
 	local ret, res = l_sdk.request(id, to_json(req))
-	print('request set_img_rotate, rotate=' .. tostring(rotate) .. ',ret=' .. ret, 'res='..res)
+	print('request set_img_mirror_flip, mirror=' .. tostring(mirror) .. ',ret=' .. ret, 'res='..res)
 end
 
 
-local rotate = t_get_img_rotate(id, 0)
-print('request,now rotate = ' .. tostring(rotate))
+local mirror = t_get_img_mirror(id, 0)
+print('request,now mirror = ' .. tostring(mirror))
 
-if 0 == rotate then
-	rotate = 180
-else
-	rotate = 0
-end
 
-t_set_img_rotate(id, 0, rotate)
+t_set_img_mirror(id, 0, not mirror)
 
 
 -- –›√ﬂ3S
