@@ -369,3 +369,69 @@
   }
 }
 ```
+
+
+### 11. 设置图像的镜像翻转
+* v1.0.9
+* 请求
+
+```javascript
+{
+  cmd : 'set_img_mirror_flip',
+  llssid : '123456',
+  llauth : '123456',
+  set_img_mirror_flip : {
+    chnn : 0,
+    flip : true,
+    mirror : false
+  }
+}
+```
+
+|   参数    |    类型   |   默认值  |   备注    |
+|:---------:|:-------- |:--------- |:--------- |
+| chnn      | 数值     | 0         | 通道 |
+| flip      | 布尔     | true      | 垂直翻转 |
+| mirror    | 布尔     | false     | 水平镜像 |
+
+* 回复
+
+```javascript
+{
+  cmd : 'set_img_mirror_flip',
+  set_img_mirror_flip : {
+    code : 0
+  }
+}
+```
+
+
+### 12. 获取图像的镜像翻转
+* v1.0.9
+* 获取默认 图像的镜像翻转: 'default_img_mirror_flip'
+* 请求
+
+```javascript
+{
+  cmd : 'img_mirror_flip',
+  llssid : '123456',
+  llauth : '123456',
+  img_mirror_flip : {
+    chnn : 0
+  }
+}
+```
+
+* 回复
+
+```javascript
+{
+  cmd : 'img_mirror_flip',
+  img_mirror_flip : {
+    code : 0,
+    chnn : 0,
+    flip : true,
+    mirror : false
+  }
+}
+```
