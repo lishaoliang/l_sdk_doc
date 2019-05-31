@@ -1,6 +1,6 @@
 --[[
 -- Copyright (c) 2019 武汉舜立软件, All Rights Reserved
--- Created: 2019/5/20
+-- Created: 2019/5/28
 --
 -- @brief	测试设置图像水平镜像
 -- @author	李绍良

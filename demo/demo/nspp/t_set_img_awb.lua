@@ -53,6 +53,32 @@ local t_get_img_awb = function (id, chnn)
 	return ((obj or E).img_awb or E).awb
 end
 
+
+-- 获取当前镜头ISP的实时白平衡信息
+local t_get_info_img_awb = function (id, chnn)
+	local req = {
+		cmd = 'info_img_awb',
+		--llssid = '123456',
+		--llauth = '123456',
+		info_img_awb = {
+			chnn = chnn		-- 0
+		}
+	}
+	
+	local ret, res = l_sdk.request(id, to_json(req))
+	print('request get info_img_awb,ret=' .. ret, 'res='..res)
+
+	local dec, obj = pcall(cjson.decode, res)
+	
+	local E = {}
+	local b = ((obj or E).info_img_awb or E).b
+	local gb = ((obj or E).info_img_awb or E).gb
+	local gr = ((obj or E).info_img_awb or E).gr
+	local r = ((obj or E).info_img_awb or E).r
+	
+	return b, gb, gr, r
+end
+
 -- 设置白平衡设置
 local t_set_img_awb = function (id, chnn, awb, b, gb, gr, r)
 	local req = {
@@ -62,17 +88,22 @@ local t_set_img_awb = function (id, chnn, awb, b, gb, gr, r)
 		set_img_awb = {
 			chnn = chnn,		-- 0
 			awb = awb,			-- 'auto', 'manual'
-			b = b or 2047,		-- [0, 4095]
-			gb = gb or 2047,	-- [0, 4095]
-			gr = gr or 2047,	-- [0, 4095]
-			r = r or 2047		-- [0, 4095]
+			b = b,				-- [0, 4095]
+			gb = gb,			-- [0, 4095]
+			gr = gr,			-- [0, 4095]
+			r = r				-- [0, 4095]
 		}
 	}
 	
-	local ret, res = l_sdk.request(id, to_json(req))
-	print('request set_img_awb, awb = ' .. tostring(awb) .. '. ' .. string.format('b/gb/gr/r=[%d,%d,%d,%d]', req.set_img_awb.b, req.set_img_awb.gb, req.set_img_awb.gr, req.set_img_awb.r))
+	local txt_req = to_json(req)
+	local ret, res = l_sdk.request(id, txt_req)
+	
+	print('request set_img_awb, awb = ' .. tostring(awb) .. ': req = ' .. txt_req)
 	print('ret=' .. ret, 'res='..res)
 end
+
+
+local now_b, now_gb, now_gr, now_r = t_get_info_img_awb(id, 0)
 
 
 local awb = t_get_img_awb(id, 0)
@@ -80,7 +111,20 @@ print('request,now img_awb = ' .. tostring(awb))
 
 
 if 'auto' == awb then
-	t_set_img_awb(id, 0, 'manual', l_sys.rand(4096) - 1, l_sys.rand(4096) - 1, l_sys.rand(4096) - 1, l_sys.rand(4096) - 1)
+	-- 使用随机值
+	--t_set_img_awb(id, 0, 'manual', l_sys.rand(4096) - 1, l_sys.rand(4096) - 1, l_sys.rand(4096) - 1, l_sys.rand(4096) - 1)
+	
+	-- 使用实时白平衡信息,刚从服务端获取来的值
+	t_set_img_awb(id, 0, 'manual', now_b, now_gb, now_gr, now_r)
+	
+	-- 使用实时白平衡信息,服务端自行完成
+	--t_set_img_awb(id, 0, 'manual')
+	
+	-- 自定义的值, gb = gr
+	--t_set_img_awb(id, 0, 'manual', 200, 2047, 2047, 1000)
+	
+	-- 缺失某项, 和不带 b gb gr r效果一样
+	--t_set_img_awb(id, 0, 'manual', 200, 2047, nil, 1000)
 else
 	t_set_img_awb(id, 0, 'auto')
 end

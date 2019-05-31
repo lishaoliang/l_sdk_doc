@@ -1,6 +1,6 @@
 --[[
 -- Copyright (c) 2019 ÎäººË´Á¢Èí¼ş, All Rights Reserved
--- Created: 2019/5/20
+-- Created: 2019/5/28
 --
 -- @brief	²âÊÔÉèÖÃÍ¼Ïñ´¹Ö±·­×ª
 -- @author	ÀîÉÜÁ¼
@@ -52,7 +52,7 @@ local t_get_img_flip = function (id, chnn)
 end
 
 
-local t_set_img_rotate = function (id, chnn, flip)
+local t_set_img_flip = function (id, chnn, flip)
 	local req = {
 		cmd = 'set_img_mirror_flip',
 		--llssid = '123456',
@@ -73,7 +73,7 @@ local flip = t_get_img_flip(id, 0)
 print('request,now flip = ' .. tostring(flip))
 
 
-t_set_img_rotate(id, 0, not flip)
+t_set_img_flip(id, 0, not flip)
 
 
 -- ĞİÃß3S
