@@ -29,15 +29,33 @@ local open_stream = function (id, chnn, idx)
 	local json = to_json(req)
 	--print('open stream:', json)
 
-	local err, res = l_sdk.request(id, json)
+	local ret, res = l_sdk.request(id, json)
 
-	return err, res
+	return ret, res
+end
+
+local conn_status = function (...)
+	local req = {
+		cmd = 'status_connect',
+		status_connect = {}
+	}
+
+	for i, v in ipairs({...}) do
+		if 'string' == type(v) then
+			table.insert(req.status_connect, v)
+		end
+	end
+	
+	local ret, res = l_sdk.request(0, to_json(req))
+	
+	return ret, res
 end
 
 
 -- sdk初始化
 l_sdk.init('')
 
+--print(conn_status('1000', '1001', '1002'))
 
 -- 登录到设备
 local err, id = login(target.ip, target.port, target.username, target.passwd)
@@ -66,9 +84,18 @@ else
 	--  内置播放器,需要win支持Opengl2.0以上
 	local dlg = l_sdk.open_wnd()	-- 打开窗口
 	dlg:bind(id, chnn, idx, 0)		-- 将窗口绑定到登录id, 通道, 流序号
+	
+	local cs_tc = 0
 	while dlg:is_run() do			-- 窗口是否关闭
+		cs_tc = cs_tc + 200
+		if 3000 <= cs_tc then
+			cs_tc = 0
+			print(conn_status(tostring(id)))
+		end
+		
 		l_sys.sleep(200)
 	end
+	
 	dlg:close()
 end
 
