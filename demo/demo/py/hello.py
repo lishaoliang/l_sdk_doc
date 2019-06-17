@@ -1,5 +1,5 @@
 ﻿#!/usr/bin/python3
-
+#-*-coding:utf-8-*-
 """
 ///////////////////////////////////////////////////////////////////////////
 //  Copyright(c) 2019, 武汉舜立软件, All Rights Reserved
@@ -11,10 +11,12 @@
 /// @author  李绍良
 ///////////////////////////////////////////////////////////////////////////
 """
-#-*-coding:utf-8-*-
+# 添加基础搜索目录
+import l_sdk
+l_sdk.append_path()
+
 import re
 import target as tg
-import l_sdk
 
 
 # 初始化, 登录
@@ -25,12 +27,12 @@ l_sdk.login(None, ip = tg.ip, port = tg.port, username = tg.username, passwd = t
 
 def filter(key):
     # 排除登录等命令
-    ex = ['support', 'login', 'logout', 'stream', 'stream_pic']
+    ex = ['support', 'login', 'logout', 'stream', 'stream_pic', 'default_stream', 'default_stream_pic']
     if key in ex:
         return False
 
     # 排除 set_*, open_*, close_* 等命令
-    if re.match('set_*|open_*|close_*', key) :
+    if re.match(r'set_*|open_*|close_*', key) :
         return False 
 
     return True

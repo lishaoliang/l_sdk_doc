@@ -1,9 +1,13 @@
 ﻿#!/usr/bin/python3
 
 #-*-coding:utf-8-*-
+# 添加基础搜索目录
+import l_sdk
+l_sdk.append_path()
 
 import target as tg
-import sys, time
+import sys
+import time
 import requests
 
 #print(dir(requests))

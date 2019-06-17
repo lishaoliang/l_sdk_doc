@@ -1,4 +1,5 @@
 ﻿#!/usr/bin/python3
+#-*-coding:utf-8-*-
 
 """
 ///////////////////////////////////////////////////////////////////////////
@@ -12,10 +13,13 @@
 /// @see https://github.com/lishaoliang/l_sdk_doc/blob/master/sdk/l_sdk_discover.md
 ///////////////////////////////////////////////////////////////////////////
 """
-#-*-coding:utf-8-*-
-import re, time
-import target as tg
+# 添加基础搜索目录
 import l_sdk
+l_sdk.append_path()
+
+import re
+import time
+import target as tg
 
 
 # 初始化, 打开网络发现, 打开搜索

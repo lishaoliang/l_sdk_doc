@@ -19,7 +19,8 @@
 """
 
 # 当前目录加入查找
-import os, sys
+import os
+import sys
 PWD = os.getcwd()
 if not PWD in sys.path :
     sys.path.append(PWD)
@@ -33,6 +34,7 @@ from . import discover      # 网络发现
 __version__ = '1.0.11'
 
 __all__ = [
+    'append_path'
     'dump',
 
     'init',
@@ -61,6 +63,25 @@ discover_get_devs = discover.discover_get_devs
 # 记录上一次的登录ID
 g_login_id = 0
 
+
+def append_path():
+    """
+    /// @brief 添加部分目录到标准搜索目录
+    ///  1.PWD + '/site-packages'   # 标准开源扩展库
+    ///  2.PWD + '/demo/py'         # 示例py库
+    ///  3.PWD + '/demo'            # 示例py库
+    """
+    packages = PWD + '/site-packages'
+    if not packages in sys.path :
+        sys.path.append(packages)
+
+    demo_py = PWD + '/demo/py'
+    if not demo_py in sys.path :
+        sys.path.append(demo_py)
+
+    demo = PWD + '/demo'
+    if not demo_py in sys.path :
+        sys.path.append(demo)
 
 
 def dump():
