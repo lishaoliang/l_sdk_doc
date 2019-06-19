@@ -21,7 +21,7 @@ import target as tg
 
 # 初始化, 登录
 l_sdk.init()
-l_sdk.login(None, ip = tg.ip, port = tg.port, username = tg.username, passwd = tg.passwd)
+l_sdk.login(ip = tg.ip, port = tg.port, username = tg.username, passwd = tg.passwd)
 
 
 

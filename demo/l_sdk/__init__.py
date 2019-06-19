@@ -6,14 +6,14 @@
 //
 /// @file    l_sdk
 /// @brief   sdk接口; 目标支持PC,手机等内存,CPU资源充足的平台
-///  \n 各个函数参数具体细节参见: 私有协议文档, SDK文档
-///  \n sdk接口设计原则: 1.兼容公司各种设备; 2.不得任意变更接口; 3.sdk版本本身兼容性; 4.精简接口
+///  各个函数参数具体细节参见: 私有协议文档, SDK文档
+///  sdk接口设计原则: 1.兼容公司各种设备; 2.不得任意变更接口; 3.sdk版本本身兼容性; 4.精简接口
 /// @version 0.2
 /// @author  李绍良
 /// @history 修改历史
-///  \n 2018/12/22 0.1 创建文件
-///  \n 2019/04/13 0.2 将网络搜索从主工程中剔除, 成为独立搜索摸索模块
-///  \n  搜索模块预留支持 nspp广播, onvif组播等第三方搜索
+///  2018/12/22 0.1 创建文件
+///  2019/04/13 0.2 将网络搜索从主工程中剔除, 成为独立搜索摸索模块
+///     搜索模块预留支持 nspp广播, onvif组播等第三方搜索
 /// @warning 没有警告
 ///////////////////////////////////////////////////////////////////////////
 """
@@ -28,13 +28,21 @@ if not PWD in sys.path :
 import json                 # json.dumps json.loads 
 import l_sdk_py             # 从l_sdk_py.pyd文件加载接口
 
-from . import discover      # 网络发现
+# 网络发现部分函数
+from .discover import discover_open, discover_close, discover_run, discover_get_devs
 
+# 解码器部分函数
+from .dec import dec_open, dec_close, dec_bind, dec_unbind, dec_get_md_data
+
+# 类封装
+from .sdkc import sdkc as c
 
 __version__ = '1.0.11'
 
 __all__ = [
-    'append_path'
+    'c',
+
+    'append_path',
     'dump',
 
     'init',
@@ -48,16 +56,19 @@ __all__ = [
     'discover_run',
     'discover_get_devs',
     'discover_request',
+
+    'dec_open',
+    'dec_close',
+    'dec_bind',
+    'dec_unbind',
+    'dec_get_md_data',
 ]
 
 __author__ = 'lishaoliang'
 
 
-# 网络发现函数
-discover_open     = discover.discover_open
-discover_close    = discover.discover_close
-discover_run      = discover.discover_run
-discover_get_devs = discover.discover_get_devs
+# 记录初始化次数
+g_init_count = 0
 
 
 # 记录上一次的登录ID
@@ -70,6 +81,7 @@ def append_path():
     ///  1.PWD + '/site-packages'   # 标准开源扩展库
     ///  2.PWD + '/demo/py'         # 示例py库
     ///  3.PWD + '/demo'            # 示例py库
+    /// @return 无
     """
     packages = PWD + '/site-packages'
     if not packages in sys.path :
@@ -99,34 +111,47 @@ def init(*, cfg = {}):
     /// @return 无
     /// @note 错误码参见SDK错误码
     """
-    config = ''
-    try:
-        config = json.dumps(cfg)
-    except Exception as e:
-        pass
+    global g_init_count
+    global g_login_id
 
-    try:
-        l_sdk_py.init(config)
-    except Exception as e:
-        pass
+    if 0 == g_init_count :
+        g_login_id += 1
+        config = ''
+        try:
+            config = json.dumps(cfg)
+        except Exception as e:
+            pass
+
+        try:
+            l_sdk_py.init(config)
+        except Exception as e:
+            pass
+    else:
+        g_init_count += 1
 
 
 
 def quit():
     """
     /// @brief sdk退出
+    /// @return 无
     """
+    global g_init_count
     global g_login_id
-    g_login_id = 0
 
-    l_sdk_py.quit()
+    g_init_count -= 1
+
+    if g_init_count <= 0 :
+        l_sdk_py.quit()
+        g_login_id = 0
+        g_init_count = 0
 
 
 
-def login(obj, *, ip = '192.168.1.247', port = 80, username = 'admin', passwd = '123456'):
+def login(*, req=None, ip='192.168.1.247', port=80, username='admin', passwd='123456'):
     """
     /// @brief 登入到某个设备
-    /// @param [in] obj         字典形式的json数据
+    /// @param [in] req         字典形式的json数据
     /// @param [in] ip          目标IP[obj = None]
     /// @param [in] port        目标端口[obj = None]
     /// @param [in] username    用户名[obj = None]
@@ -135,8 +160,8 @@ def login(obj, *, ip = '192.168.1.247', port = 80, username = 'admin', passwd = 
     /// @note 
     ///  例如: obj={"ip":"192.168.1.247","port":80,"login":{"username":"admin","passwd":"123456"}}
     """
-    if None == obj :
-        obj = {
+    if None == req :
+        req = {
             'ip' : ip,
             'port' : port,
             'login' : {
@@ -145,14 +170,15 @@ def login(obj, *, ip = '192.168.1.247', port = 80, username = 'admin', passwd = 
             }
         }
 
-    param = ''
+    txt = ''
     try:
-        param = json.dumps(obj)
+        txt = json.dumps(req)
     except Exception as e:
         pass
 
-    #print('login param:', param)
-    id = l_sdk_py.login(param)
+    #print('login param:', txt)
+    id = l_sdk_py.login(txt)
+    #print('login id:', id)
 
     global g_login_id
     g_login_id = id
@@ -165,6 +191,7 @@ def logout(*, id = 0):
     """
     /// @brief 登出某个设备
     /// @param [in] id  登录id
+    /// @return 无
     """
     global g_login_id
 
@@ -177,19 +204,19 @@ def logout(*, id = 0):
 
 
 
-def request(obj, *, id = 0):
+def request(req, *, id = 0):
     """
     /// @brief 向设备发起请求
-    /// @param [in] obj 字典形式的json数据
+    /// @param [in] req 字典形式的json数据
     /// @param [in] id  登录ID
     /// @return 字典
     /// @note 耗时视具体请求, 最多几秒
     ///   具体的请求,回复数据格式参见 协议文档
     ///   https://github.com/lishaoliang/l_sdk_doc, 媒体-控制子协议
     """
-    req = ''
+    txt = ''
     try:
-        req = json.dumps(obj)
+        txt = json.dumps(req)
     except Exception as e:
         pass
 
@@ -197,7 +224,7 @@ def request(obj, *, id = 0):
         id = g_login_id
     
     #print('request:', req, id, g_login_id)
-    res = l_sdk_py.request(id, req)
+    res = l_sdk_py.request(id, txt)
 
     ret = {}
     try:

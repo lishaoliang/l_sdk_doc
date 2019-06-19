@@ -10,13 +10,6 @@
 /// @author  李绍良
 ///////////////////////////////////////////////////////////////////////////
 """
-
-# 当前目录加入查找
-import os, sys
-PWD = os.getcwd()
-if not PWD in sys.path :
-    sys.path.append(PWD)
-
 __version__ = '1.0.11'
 
 __all__ = [
