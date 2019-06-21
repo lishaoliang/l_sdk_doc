@@ -23,6 +23,10 @@ import target as tg
 import cv2 as cv
 
 
+# 流ID 0.主码流; 1.子码流
+idx = 0
+
+
 # 处理图像帧
 def process(frame):
     """
@@ -40,7 +44,7 @@ with l_sdk.c(ip = tg.ip,
 
     # 登录
     a.login()
-    a.open_stream()
+    a.open_stream(idx = idx)
 
 
     # 创建窗口显示
@@ -52,7 +56,7 @@ with l_sdk.c(ip = tg.ip,
     # 循环显示每帧
     while True:
         try:
-            frame = a.get_stream()
+            frame = a.get_stream(idx = idx)
             frame = process(frame)
             cv.imshow(wndname, frame)
         except Exception as e:

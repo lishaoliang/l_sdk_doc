@@ -1,78 +1,88 @@
---[[
--- ²âÊÔÎÄµµ¼òÒªËµÃ÷
+ï»¿--[[
+-- æµ‹è¯•æ–‡æ¡£ç®€è¦è¯´æ˜
 -- 
--- Éı¼¶°ü½éÉÜ
---		*update					USBÉı¼¶°ü
---		*update_v1.0.7.lpk		ÍøÂçÉı¼¶°ü
---		*update.txt				Éı¼¶°ü¼òÒ×ÃèÊö: 
---			"hw_ver = h1.0.7"	ÎÄ¼şÏµÍ³°æ±¾
---			"sw_ver = v1.0.7"	Èí¼ş°æ±¾
---			"build_time = *"	±àÒëÊ±¼ä, 
---			"*update (md5) = *"	USBÉı¼¶°üÎÄ¼şµÄmd5Öµ
---			"*update_v1.0.7.lpk (md5) = *"	ÍøÂçÉı¼¶°üµÄmd5Öµ
---		Èí¼ş¹¦ÄÜ.xlsx			µ±Ç°°æ±¾Ö÷Òª¹¦ÄÜ
--- Èí¼ş°üÊÇ·ñËğ»µÈ·ÈÏ·½·¨£ºHash.exe¹¤¾ß, ¶Ô±ÈÎÄ¼şmd5Öµ
+-- å‡çº§åŒ…ä»‹ç»
+--		*update					USBå‡çº§åŒ…
+--		*update_v1.0.7.lpk		ç½‘ç»œå‡çº§åŒ…
+--		*update.txt				å‡çº§åŒ…ç®€æ˜“æè¿°: 
+--			"hw_ver = h1.0.7"	æ–‡ä»¶ç³»ç»Ÿç‰ˆæœ¬
+--			"sw_ver = v1.0.7"	è½¯ä»¶ç‰ˆæœ¬
+--			"build_time = *"	ç¼–è¯‘æ—¶é—´, 
+--			"*update (md5) = *"	USBå‡çº§åŒ…æ–‡ä»¶çš„md5å€¼
+--			"*update_v1.0.7.lpk (md5) = *"	ç½‘ç»œå‡çº§åŒ…çš„md5å€¼
+--		è½¯ä»¶åŠŸèƒ½.xlsx			å½“å‰ç‰ˆæœ¬ä¸»è¦åŠŸèƒ½
+-- è½¯ä»¶åŒ…æ˜¯å¦æŸåç¡®è®¤æ–¹æ³•ï¼šHash.exeå·¥å…·, å¯¹æ¯”æ–‡ä»¶md5å€¼
 
-Ò». Ä¿Â¼½á¹¹
+ä¸€. ç›®å½•ç»“æ„
 	./
-		Hash.exe		-- md5, sha1µÈÎÄ¼şĞ£Ñé¹¤¾ß
-		md5sums.exe		-- winÆ½Ì¨ÃüÁîĞĞmd5¼ÆËã
-		llua.exe		-- ²âÊÔÖ÷Ö´ĞĞ³ÌĞò
-		curl.exe		-- µÚÈı·½¹¤¾ß: http/https
-		l_sdk.dll		-- sdk¿â
-		*.dll			-- ÆäËû¸¨Öú¶¯Ì¬¿â
+		Hash.exe		-- md5, sha1ç­‰æ–‡ä»¶æ ¡éªŒå·¥å…·
+		md5sums.exe		-- winå¹³å°å‘½ä»¤è¡Œmd5è®¡ç®—
+		llua.exe		-- æµ‹è¯•ä¸»æ‰§è¡Œç¨‹åº
+		python.exe		-- Python3.73ä¸»æ‰§è¡Œç¨‹åº
+		curl.exe		-- ç¬¬ä¸‰æ–¹å·¥å…·: http/https
+		l_sdk.dll		-- sdkåº“
+		*.dll			-- å…¶ä»–è¾…åŠ©åŠ¨æ€åº“
 	
 	
-	./demo				-- ²âÊÔ½Å±¾Ä¿Â¼
-		readme.txt		-- ËµÃ÷ÎÄ¼ş
-		target.lua		-- ²âÊÔÄ¿±êÉè±¸ĞÅÏ¢: IPµØÖ·,µÇÂ¼ĞÅÏ¢,wifiĞÅÏ¢
-		t_nspp.lua		-- ²âÊÔÒ»²¿·ÖnsppË½ÓĞĞ­Òé¼¯ºÏ
+	./demo				-- æµ‹è¯•è„šæœ¬ç›®å½•
+		readme.txt		-- è¯´æ˜æ–‡ä»¶
+		target.lua		-- æµ‹è¯•ç›®æ ‡è®¾å¤‡ä¿¡æ¯: IPåœ°å€,ç™»å½•ä¿¡æ¯,wifiä¿¡æ¯
+		t_nspp.lua		-- æµ‹è¯•ä¸€éƒ¨åˆ†nsppç§æœ‰åè®®é›†åˆ
 		
-		author.lua		-- lua½Å±¾¹æ·¶
-		curl.lua		-- ·â×°µ÷ÓÃ"curl.exe"Ö´ĞĞhttp/https¶ÌÁ¬½Ó
-		login.lua		-- ·â×°Í¨ÓÃµÇÂ¼
-		to_json.lua		-- ·â×°½«luaµÄtable×ª»»ÎªjsonÎÄ±¾
+		author.lua		-- luaè„šæœ¬è§„èŒƒ
+		curl.lua		-- å°è£…è°ƒç”¨"curl.exe"æ‰§è¡Œhttp/httpsçŸ­è¿æ¥
+		login.lua		-- å°è£…é€šç”¨ç™»å½•
+		to_json.lua		-- å°è£…å°†luaçš„tableè½¬æ¢ä¸ºjsonæ–‡æœ¬
 	
 	
-	./demo/nspp			-- ²âÊÔË½ÓĞĞ­Òé½Å±¾Ä¿Â¼
-		t_base.lua		-- ²âÊÔ»ñÈ¡Éè±¸»ù´¡ĞÅÏ¢: ÀıÈçÉè±¸Ãû³Æ
-		t_discover.lua	-- ²âÊÔ¾ÖÓòÍøÂç×é²¥·¢ÏÖ
-		t_login.lua		-- ²âÊÔµÇÂ¼µ½Éè±¸
+	./demo/nspp			-- æµ‹è¯•ç§æœ‰åè®®è„šæœ¬ç›®å½•
+		t_base.lua		-- æµ‹è¯•è·å–è®¾å¤‡åŸºç¡€ä¿¡æ¯: ä¾‹å¦‚è®¾å¤‡åç§°
+		t_discover.lua	-- æµ‹è¯•å±€åŸŸç½‘ç»œç»„æ’­å‘ç°
+		t_login.lua		-- æµ‹è¯•ç™»å½•åˆ°è®¾å¤‡
 		
-		t_m_stream_play.lua		-- ²âÊÔ¼«ÏŞÀ­È¡¶àÂ·ÂëÁ÷, ²¥·ÅÒ»Â·ÂëÁ÷
-		t_set_dhcp.lua			-- ²âÊÔÉèÖÃÓĞÏßÍø¿ÚÎªdhcp×Ô¶¯»ñÈ¡IP
-		t_set_image.lua			-- ²âÊÔÉèÖÃÍ¼Ïñ²ÎÊı
-		t_set_img_awb.lua		-- ²âÊÔÉèÖÃÍ¼Ïñ°×Æ½ºâ
-		t_set_img_flip.lua		-- ²âÊÔÉèÖÃÍ¼Ïñ´¹Ö±·­×ª
-		t_set_img_mirror.lua	-- ²âÊÔÉèÖÃÍ¼ÏñË®Æ½¾µÏñ
-		t_set_img_rotate.lua	-- ²âÊÔÉèÖÃÍ¼ÏñĞı×ª
-		t_set_ipv4.lua			-- ²âÊÔÉèÖÃÓĞÏßÍø¿ÚÎª¾²Ì¬IPµØÖ·
-		t_set_stream.lua		-- ²âÊÔÉèÖÃÂëÁ÷²ÎÊı
-		t_set_stream_pic.lua	-- ²âÊÔÉèÖÃÍ¼Æ¬Á÷²ÎÊı
-		t_stream.lua			-- ²âÊÔÀ­È¡Ò»Â·ÂëÁ÷,Ö»À­È¡Á÷²»²¥·Å
-		t_stream_pic.lua		-- ²âÊÔÀ­È¡Í¼Æ¬Á÷, ²¢±£´æ³ÉÎÄ¼ş
-		t_stream_play.lua		-- ²âÊÔÀ­È¡Ò»Â·ÂëÁ÷, ²¥·ÅÒ»Â·ÂëÁ÷
-		t_upgrade.lua			-- ²âÊÔÉı¼¶Ö¸¶¨µÄÉè±¸,Ö¸¶¨µÄ°æ±¾
-		t_upgrade_auto.lua		-- ²âÊÔÉı¼¶: ´Ó¾ÖÓòÍø×Ô¶¯ËÑË÷Éè±¸, ×Ô¶¯ËÑË÷Ö¸¶¨Ä¿Â¼µÄÉı¼¶°ü, ×Ô¶¯Éı¼¶
-		t_wireless_set_ap.lua	-- ²âÊÔÉèÖÃÉè±¸µÄÎŞÏßÎª "AP"Ä£Ê½(¼´½«Éè±¸×÷ÎªÈÈµã)
-		t_wireless_set_dhcp.lua	-- ²âÊÔÉè±¸ÔÚ"STA"Ä£Ê½ÏÂÊ±, ĞŞ¸ÄÎŞÏßÎªdhcp×Ô¶¯»ñÈ¡IPµØÖ·
-		t_wireless_set_ipv4.lua	-- ²âÊÔÉè±¸ÔÚ"STA"Ä£Ê½ÏÂÊ±, ĞŞ¸ÄÎŞÏßÎª¾²Ì¬IPµØÖ·
-		t_wireless_set_sta.lua	-- ²âÊÔÉèÖÃÉè±¸µÄÎŞÏßÎª "STA"Ä£Ê½(¼´½«Éè±¸×÷ÎªÖÕ¶ËÁ¬½Óµ½wifiÂ·ÓÉÆ÷)
+		t_m_stream_play.lua		-- æµ‹è¯•æé™æ‹‰å–å¤šè·¯ç æµ, æ’­æ”¾ä¸€è·¯ç æµ
+		t_set_dhcp.lua			-- æµ‹è¯•è®¾ç½®æœ‰çº¿ç½‘å£ä¸ºdhcpè‡ªåŠ¨è·å–IP
+		t_set_image.lua			-- æµ‹è¯•è®¾ç½®å›¾åƒå‚æ•°
+		t_set_img_awb.lua		-- æµ‹è¯•è®¾ç½®å›¾åƒç™½å¹³è¡¡
+		t_set_img_flip.lua		-- æµ‹è¯•è®¾ç½®å›¾åƒå‚ç›´ç¿»è½¬
+		t_set_img_mirror.lua	-- æµ‹è¯•è®¾ç½®å›¾åƒæ°´å¹³é•œåƒ
+		t_set_img_rotate.lua	-- æµ‹è¯•è®¾ç½®å›¾åƒæ—‹è½¬
+		t_set_ipv4.lua			-- æµ‹è¯•è®¾ç½®æœ‰çº¿ç½‘å£ä¸ºé™æ€IPåœ°å€
+		t_set_stream.lua		-- æµ‹è¯•è®¾ç½®ç æµå‚æ•°
+		t_set_stream_pic.lua	-- æµ‹è¯•è®¾ç½®å›¾ç‰‡æµå‚æ•°
+		t_stream.lua			-- æµ‹è¯•æ‹‰å–ä¸€è·¯ç æµ,åªæ‹‰å–æµä¸æ’­æ”¾
+		t_stream_pic.lua		-- æµ‹è¯•æ‹‰å–å›¾ç‰‡æµ, å¹¶ä¿å­˜æˆæ–‡ä»¶
+		t_stream_play.lua		-- æµ‹è¯•æ‹‰å–ä¸€è·¯ç æµ, æ’­æ”¾ä¸€è·¯ç æµ
+		t_upgrade.lua			-- æµ‹è¯•å‡çº§æŒ‡å®šçš„è®¾å¤‡,æŒ‡å®šçš„ç‰ˆæœ¬
+		t_upgrade_auto.lua		-- æµ‹è¯•å‡çº§: ä»å±€åŸŸç½‘è‡ªåŠ¨æœç´¢è®¾å¤‡, è‡ªåŠ¨æœç´¢æŒ‡å®šç›®å½•çš„å‡çº§åŒ…, è‡ªåŠ¨å‡çº§
+		t_wireless_set_ap.lua	-- æµ‹è¯•è®¾ç½®è®¾å¤‡çš„æ— çº¿ä¸º "AP"æ¨¡å¼(å³å°†è®¾å¤‡ä½œä¸ºçƒ­ç‚¹)
+		t_wireless_set_dhcp.lua	-- æµ‹è¯•è®¾å¤‡åœ¨"STA"æ¨¡å¼ä¸‹æ—¶, ä¿®æ”¹æ— çº¿ä¸ºdhcpè‡ªåŠ¨è·å–IPåœ°å€
+		t_wireless_set_ipv4.lua	-- æµ‹è¯•è®¾å¤‡åœ¨"STA"æ¨¡å¼ä¸‹æ—¶, ä¿®æ”¹æ— çº¿ä¸ºé™æ€IPåœ°å€
+		t_wireless_set_sta.lua	-- æµ‹è¯•è®¾ç½®è®¾å¤‡çš„æ— çº¿ä¸º "STA"æ¨¡å¼(å³å°†è®¾å¤‡ä½œä¸ºç»ˆç«¯è¿æ¥åˆ°wifiè·¯ç”±å™¨)
 		
 
-	./demo/http			-- ²âÊÔhttpĞ­Òé½Å±¾Ä¿Â¼
-		-- ´ıÌí¼Ó
+	./demo/l_sdk				-- Pythonåº“å°è£…
+	./demo/py					-- Pythonè„šæœ¬ç›®å½•
+		target/__init__.py		-- pyæµ‹è¯•ç›®æ ‡
+		discover.py				-- æµ‹è¯•ç½‘ç»œå‘ç°(ç›´æ¥ä½¿ç”¨æ¥å£)
+		hello.py				-- æµ‹è¯•æ‰€æœ‰ç½‘ç»œå‘½ä»¤(ç›´æ¥ä½¿ç”¨æ¥å£)
+		t_cv_nspp.py			-- ä½¿ç”¨opencvæµ‹è¯•NSPPåè®®è§†é¢‘æµ,å›¾åƒå·²ç»å¯¹æ¥numpy,å¯ä»¥ä½¿ç”¨cvå¯¹å›¾åƒè¿›è¡ŒäºŒæ¬¡å¤„ç†
+		t_cv_rtsp.py			-- ä½¿ç”¨opencvçš„RTSPåè®®è¿æ¥è§†é¢‘æµ
+		t_discover.py			-- æµ‹è¯•ç½‘ç»œå‘ç°(ä½¿ç”¨å°è£…æ¥å£)
+		t_get.py				-- æµ‹è¯•æ‰€æœ‰è·å–ç½‘ç»œå‘½ä»¤(ä½¿ç”¨å°è£…æ¥å£)
+		t_version.py			-- æ‰“å°åº“ç‰ˆæœ¬
+		test.py					-- æµ‹è¯•HTTPåè®®
 
 
-¶ş. È·ÈÏ²âÊÔÄ¿±êĞÅÏ¢, ´ò¿ªÎÄ¼ş ./demo/target.lua
-	1. Ä¿±êIPµØÖ·: target.ip
-	2. Ä¿±ê¶Ë¿Ú: target.port
-	3. ĞèÒªÁ¬½ÓWIFIµÄÂ·ÓÉÆ÷Ãû³Æ: target.wifi_ssid
-	4. ĞèÒªÁ¬½ÓWIFIµÄÂ·ÓÉÆ÷ÃÜÂë: target.wifi_passwd
+äºŒ. ç¡®è®¤æµ‹è¯•ç›®æ ‡ä¿¡æ¯, æ‰“å¼€æ–‡ä»¶ ./demo/target.lua
+	1. ç›®æ ‡IPåœ°å€: target.ip
+	2. ç›®æ ‡ç«¯å£: target.port
+	3. éœ€è¦è¿æ¥WIFIçš„è·¯ç”±å™¨åç§°: target.wifi_ssid
+	4. éœ€è¦è¿æ¥WIFIçš„è·¯ç”±å™¨å¯†ç : target.wifi_passwd
 
 
-Èı. ½«ÃüÁîĞĞÇĞ»»µ½µ±Ç°Ä¿Â¼, Ö´ĞĞÃüÁî: dir
-	½«»á¿´µ½ÈçÏÂ´òÓ¡:
+ä¸‰. å°†å‘½ä»¤è¡Œåˆ‡æ¢åˆ°å½“å‰ç›®å½•, æ‰§è¡Œå‘½ä»¤: dir
+	å°†ä¼šçœ‹åˆ°å¦‚ä¸‹æ‰“å°:
 	2018/12/24  09:34           830,536 curl.exe
 	2019/03/18  17:02    <DIR>          demo
 	2019/03/18  16:16           133,120 llua.exe
@@ -82,54 +92,54 @@
 	2019/03/12  13:50           144,896 l_tpool.dll
 	
 
-ËÄ. ·¢ÏÖ¾ÖÓòÍøÂçÉè±¸, Ö´ĞĞÃüÁî: llua.exe ./demo/nspp/t_discover.lua 
-	½«»á¿´µ½ÈçÏÂ´òÓ¡:
+å››. å‘ç°å±€åŸŸç½‘ç»œè®¾å¤‡, æ‰§è¡Œå‘½ä»¤: llua.exe ./demo/nspp/t_discover.lua 
+	å°†ä¼šçœ‹åˆ°å¦‚ä¸‹æ‰“å°:
 	multicast get devs:     {}
 	multicast get devs:     [{"sn":"YDFE4EFDFESHEDFR","discover":{"mac":"00:13:09:FE:45:78","mac_wireless":"00:13:09:FE:45:79","name":"IPC","dev_type":"ipc","txt_enc":"","model":"wifi-ipc","port":80,"chnn_num":1,"sw_ver":"v1.0.7","hw_ver":"h1.0.7","md_enc":""},"ip":"192.168.1.247"}]
 	
 
-Îå. ²âÊÔµÇÂ¼µ½Éè±¸, Ö´ĞĞÃüÁî: llua.exe ./demo/nspp/t_login.lua
-	½«»á¿´µ½ÈçÏÂ´òÓ¡:
+äº”. æµ‹è¯•ç™»å½•åˆ°è®¾å¤‡, æ‰§è¡Œå‘½ä»¤: llua.exe ./demo/nspp/t_login.lua
+	å°†ä¼šçœ‹åˆ°å¦‚ä¸‹æ‰“å°:
 	login ok!id=1000        admin@192.168.3.218:80
 
 
-Áù. ²âÊÔ²¥·ÅÉè±¸ÂëÁ÷, Ö´ĞĞÃüÁî: llua.exe ./demo/nspp/t_stream_play.lua
-	½«»á¿´µ½ÈçÏÂ´òÓ¡: ²¢ÇÒ»áµ¯³öÒ»¸ö´°¿ÚÏÔÊ¾ÏÖ³¡ÊÓÆµÁ÷
+å…­. æµ‹è¯•æ’­æ”¾è®¾å¤‡ç æµ, æ‰§è¡Œå‘½ä»¤: llua.exe ./demo/nspp/t_stream_play.lua
+	å°†ä¼šçœ‹åˆ°å¦‚ä¸‹æ‰“å°: å¹¶ä¸”ä¼šå¼¹å‡ºä¸€ä¸ªçª—å£æ˜¾ç¤ºç°åœºè§†é¢‘æµ
 	login ok!id=1000        admin@192.168.3.218:80
 	open stream ok!res={"cmd":"open_stream","open_stream":{"code":0}}
 
 
-Æß. ²âÊÔÉèÖÃÎŞÏß
-	1. ´ò¿ª ./demo/target.lua, È·ÈÏÂ·ÓÉÆ÷wifiÃû³Æ ºÍ ÃÜÂë
+ä¸ƒ. æµ‹è¯•è®¾ç½®æ— çº¿
+	1. æ‰“å¼€ ./demo/target.lua, ç¡®è®¤è·¯ç”±å™¨wifiåç§° å’Œ å¯†ç 
 	
-	2. ÇĞ»»µ½STAÄ£Ê½, Ö´ĞĞÃüÁî: llua.exe ./demo/nspp/t_wireless_set_sta.lua
+	2. åˆ‡æ¢åˆ°STAæ¨¡å¼, æ‰§è¡Œå‘½ä»¤: llua.exe ./demo/nspp/t_wireless_set_sta.lua
 		login ok!id=1000        admin@192.168.3.218:80
 		request set_wireless to sta, ret=0      res={"set_wireless":{"code":0},"cmd":"set_wireless"}
 	
-	3. ÇĞ»»µ½APÄ£Ê½, Ö´ĞĞÃüÁî: llua.exe ./demo/nspp/t_wireless_set_ap.lua
+	3. åˆ‡æ¢åˆ°APæ¨¡å¼, æ‰§è¡Œå‘½ä»¤: llua.exe ./demo/nspp/t_wireless_set_ap.lua
 		login ok!id=1000        admin@192.168.3.218:80
 		request set_wireless to ap, ret=0       res={"set_wireless":{"code":0},"cmd":"set_wireless"}
 		
 
-°Ë. ²âÊÔ×¥È¡Í¼Æ¬, Ö´ĞĞÃüÁî: llua.exe ./demo/nspp/t_stream_pic.lua
-	½«»á¿´µ½ÈçÏÂ´òÓ¡: Èç¹û³É¹¦, ÔÚµ±Ç°Ä¿Â¼»á¿´µ½Ò»ÏµÁĞµÄ *.jpg ÎÄ¼ş
+å…«. æµ‹è¯•æŠ“å–å›¾ç‰‡, æ‰§è¡Œå‘½ä»¤: llua.exe ./demo/nspp/t_stream_pic.lua
+	å°†ä¼šçœ‹åˆ°å¦‚ä¸‹æ‰“å°: å¦‚æœæˆåŠŸ, åœ¨å½“å‰ç›®å½•ä¼šçœ‹åˆ°ä¸€ç³»åˆ—çš„ *.jpg æ–‡ä»¶
 	login ok!id=1000        admin@192.168.3.218:80
 	open stream ok!res={"open_stream":{"code":0},"cmd":"open_stream"}
 		
 
-¾Å. ÆäËû²âÊÔÃüÁî:
+ä¹. å…¶ä»–æµ‹è¯•å‘½ä»¤:
 	llua.exe ./demo/nspp/t_base.lua
 	llua.exe ./demo/nspp/t_stream.lua
 	
 
-Ê®. ÅúÁ¿²âÊÔÃüÁî: llua.exe ./demo/t_nspp.lua
-	½«Ö´ĞĞ¸÷¸ö²âÊÔ½Å±¾		
+å. æ‰¹é‡æµ‹è¯•å‘½ä»¤: llua.exe ./demo/t_nspp.lua
+	å°†æ‰§è¡Œå„ä¸ªæµ‹è¯•è„šæœ¬		
 
-Ê®Ò». Éı¼¶:
-	ÏÈĞŞ¸ÄÉı¼¶°üÊµ¼Ê´æ·ÅµÄÂ·¾¶
+åä¸€. å‡çº§:
+	å…ˆä¿®æ”¹å‡çº§åŒ…å®é™…å­˜æ”¾çš„è·¯å¾„
 	llua.exe ./demo/nspp/t_upgrade.lua
 	
-	½«»á¿´µ½ÈçÏÂ´òÓ¡: 
+	å°†ä¼šçœ‹åˆ°å¦‚ä¸‹æ‰“å°: 
 	request upgrade:        0       {"cmd":"upgrade","upgrade":{"code":0}}
 	status_upgrade: doing   1.0
 	status_upgrade: doing   11.0
@@ -141,6 +151,25 @@
 	status_upgrade: doing   71.0
 	status_upgrade: doing   81.0
 	status_upgrade: doing   90.0
-	status_upgrade: done    100.0	
+	status_upgrade: done    100.0
+
+
+åäºŒ. Python3ä½¿ç”¨å‘½ä»¤: æ‰“å¼€æ–‡ä»¶ ./demo/py/target/__init__.py ä¿®æ”¹ç›®æ ‡è®¾å¤‡ä¿¡æ¯
+	ä¾‹å¦‚: 
+	./python.exe ./demo/py/discover.py
+	./python.exe ./demo/py/hello.py
+	./python.exe ./demo/py/t_cv_nspp.py
+	./python.exe ./demo/py/t_cv_rtsp.py
+
+
+åäºŒ. Python3æ‰©å±•åº“:
+	å°†å¦‚ä¸‹æ–‡ä»¶æ”¾ç½®åˆ°å¯¹åº”Pythonç¯å¢ƒ(æ³¨æ„32, 64ä½)ä¸­, å³å¯ä½¿ç”¨
+	./demo/l_sdk/*.py			-- pyæ¥å£å°è£…
+	./demo/l_sdk_py.pyd			-- pyåŸå§‹æ¥å£
+	./demo/l_sdk.dll
+	./demo/l_tpool.dll
+	./demo/lua-5.3.5.dll
+	ffmpegç³»åˆ—åŠ¨æ€åº“
+
 
 --]]

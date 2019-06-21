@@ -19,7 +19,7 @@ l_sdk.append_path()
 
 import re
 import time
-import target as tg
+#import target as tg
 
 
 # 初始化, 打开网络发现, 打开搜索

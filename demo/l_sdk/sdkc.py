@@ -10,6 +10,7 @@
 ///////////////////////////////////////////////////////////////////////////
 """
 
+import re
 import time
 import l_sdk
 
@@ -28,7 +29,7 @@ class sdkc:
             self.m_passwd = passwd
 
         self.m_login_id = 0
-        self.stream = []
+        self.streams = []
 
         l_sdk.init(cfg = cfg)
         l_sdk.discover_open()
@@ -186,6 +187,20 @@ class sdkc:
     
     def open_stream(self, dec_id=10000, *, chnn=0, idx=0, md_id=0,
                     dec_cfg={'pix_fmt':'BGR888'}):
+        """
+        /// @brief 开启媒体流
+        /// @param [in] dec_id     编码器ID(非0. 不可重复)
+        /// @param [in] chnn       通道号
+        /// @param [in] idx        流序号
+        /// @param [in] md_id      媒体id
+        /// @param [in] dec_cfg    解码器配置
+        ///     解码之后像素格式: 默认YUV420P_SEPARATE
+        ///     dec_cfg.pix_fmt = ['ARGB8888', 'RGB888', 'YUV420P_SEPARATE', 'ABGR8888', 'BGR888'
+        ///                        'RGBA8888', 'BGRA8888']
+        /// @return int 0.成功; -1.异常; 大于0.错误码
+        /// @note 耗时视具体请求, 最多几秒
+        /// @see https://github.com/lishaoliang/l_sdk_doc/blob/master/protocol/stream.md
+        """
         req = {
             'cmd' : 'open_stream',
             'open_stream' : {
@@ -209,14 +224,24 @@ class sdkc:
                     l_sdk.dec_bind(dec_id, self.m_login_id, chnn = chnn, idx = idx, md_id = md_id)
                 else:
                     dec_id = 0
+            else:
+                dec_id = 0
 
             key = '%d-%d-%d-%d'%(chnn, idx, md_id, dec_id)
-            self.stream.append(key)
+            self.streams.append(key)
             #print(self.stream)
 
         return code
 
     def close_stream(self, *, chnn=0, idx=0, md_id=0):
+        """
+        /// @brief 关闭媒体流
+        /// @param [in] chnn       通道号
+        /// @param [in] idx        流序号
+        /// @param [in] md_id      媒体id
+        /// @return int 0.成功; -1.异常; 大于0.错误码
+        /// @see https://github.com/lishaoliang/l_sdk_doc/blob/master/protocol/stream.md
+        """
         req = {
             'cmd' : 'close_stream',
             'close_stream' : {
@@ -235,5 +260,22 @@ class sdkc:
 
 
     def get_stream(self, *, chnn=0, idx=0, md_id=0):
-        dec_id=10000
+        """
+        /// @brief 获取(视频)媒体流
+        /// @param [in] chnn               通道号
+        /// @param [in] idx                流序号
+        /// @param [in] md_id              媒体id
+        /// @return 异常 或 numpy.array[]  与numpy模块兼容的3或4维图像数组
+        /// @note 获得数组后, 可以使用通用python库来操作图像数据
+        ///   比如: opencv的各种滤波处理
+        /// @see https://github.com/lishaoliang/l_sdk_doc/blob/master/protocol/stream.md
+        """
+        dec_id = 0
+        key = '%d-%d-%d-*'%(chnn, idx, md_id)
+
+        for stream in self.streams:
+            if re.match(key, stream):
+                dec_id = int(stream.split('-')[3])
+                break
+
         return l_sdk.dec_get_md_data(dec_id)
