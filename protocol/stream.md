@@ -102,11 +102,11 @@
 | chnn      | 0         | 通道 |
 | idx       | 0         | 实时流序号: 主码流,子码流 |
 | fmt       | 'h264'    | 编码格式: 'h264','h265' |
-| rc_mode   | 'vbr'     | 定码流'cbr',编码流'vbr' |
+| rc_mode   | 'vbr'     | 定码流'cbr',变码流'vbr' |
 | wh        | '1920*1080'| 宽高 |
 | quality   | 'high'    | 图像质量: 'highest', 'higher', 'high','middle','low','lower', 'lowest' |
-| frame_rate| 25        | 帧率[1,30](秒) |
-| bitrate   | 4096      | 码流比特率[128,6144](Kbps) |
+| frame_rate| 25        | 帧率[1,25](/秒) |
+| bitrate   | 4096      | 码流比特率[128,6144](bps) |
 | i_interval| 90        | I帧间隔[25,90](帧数) |
 
 * 回复
@@ -213,7 +213,7 @@
 | idx       | 64        | 图片流1, 图片流2 |
 | fmt       | 'jpeg'    | 编码格式: 'jpeg' |
 | wh        | '4000*3000'| 宽高 |
-| quality   | 'high'    | 图像质量: (暂无效) |
+| quality   | 'high'    | 图像质量 |
 | interval_ms | 333      | 图片流间隔(毫秒) |
 
 * 回复
