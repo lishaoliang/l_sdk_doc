@@ -62,7 +62,7 @@ static int cb_sdk_media(void* p_obj, int protocol, int id, int chnn, int idx, in
 
             // H264
             int h264_len = p_data->f_v1.len;
-            unsigned char* p_h264 = p_data->p_buf + p_data->start;
+            unsigned char* p_h264 = (unsigned char*)(p_data->p_buf + p_data->start);
 
             //printf("h264 [%x,%x,%x,%x,%x]\n", p_h264[0], p_h264[1], p_h264[2], p_h264[3], p_h264[4]);
         }
@@ -83,7 +83,7 @@ static int cb_sdk_media(void* p_obj, int protocol, int id, int chnn, int idx, in
     return 0;
 }
 
-static int request_stream(id, chnn, idx)
+static int request_stream(int id, int chnn, int idx)
 {
     // 请求码流
     char req_stream[128] = { 0 };
