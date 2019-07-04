@@ -6,9 +6,6 @@
 #include "proto/l_media.h"
 #include "proto/l_md_buf.h"
 
-
-#define T_STREAM_DEC_ID         100
-
 #ifdef __L_WIN__
 #include <windows.h>
 static int wsa_startup()
@@ -26,6 +23,9 @@ static int wsa_startup()
 static int wsa_startup() { return 0; }
 #endif
 
+
+
+#define T_STREAM_DEC_ID         100
 
 // https://github.com/lishaoliang/l_sdk_doc/blob/master/protocol/auth.md
 #define T_LOGIN_STR     "{\"ip\":\"%s\",\"port\":%d,\"cmd\":\"login\",\"login\":{\"username\":\"%s\",\"passwd\":\"%s\"}}"
@@ -100,6 +100,37 @@ static int request_stream(int id, int chnn, int idx)
     return 0;
 }
 
+static int test_discover()
+{
+    l_sdk_discover_open("");
+    l_sdk_discover_run(L_TRUE);
+
+
+    for (int i = 0; i < 6; i++)
+    {
+        char* p_devs = NULL;
+        l_sdk_discover_get_devs(&p_devs);
+
+        if (NULL != p_devs)
+        {
+            printf("get devs:%s\n", p_devs);
+
+            l_sdk_free(p_devs);
+        }
+        else
+        {
+            printf("get devs:none\n");
+        }
+
+        Sleep(500);
+    }
+
+
+    l_sdk_discover_run(L_FALSE);
+    l_sdk_discover_close();
+    return 0;
+}
+
 int t_stream_dec_main(int argc, char *argv[])
 {
     // win socket环境
@@ -109,6 +140,8 @@ int t_stream_dec_main(int argc, char *argv[])
     int ret = l_sdk_init("");
     printf("(%s.%d)sdk init,ret=%d\n", __FILE__, __LINE__, ret);
 
+    // 测试广播搜索
+    test_discover();
 
     // 添加媒体数据监听者
     l_sdk_md_add_listener("my listener 1", cb_sdk_media, NULL);
@@ -134,7 +167,7 @@ int t_stream_dec_main(int argc, char *argv[])
         l_sdk_dec_bind(T_STREAM_DEC_ID, id, 0, 0, 0);
 
         // 
-        for (int i = 0; i < 10000; i++)
+        for (int i = 0; i < 200; i++)
         {
             l_md_data_t* p_md_data = NULL;
             if (0 == l_sdk_dec_get_md_data(T_STREAM_DEC_ID, &p_md_data))
