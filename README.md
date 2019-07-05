@@ -8,6 +8,7 @@
 ### [3. 网络发现](https://github.com/lishaoliang/l_sdk_doc/blob/master/sdk/l_sdk_discover.md)
 ### [4. 设备升级](https://github.com/lishaoliang/l_sdk_doc/blob/master/sdk/l_sdk_upgrade.md)
 ### [5. 状态查询](https://github.com/lishaoliang/l_sdk_doc/blob/master/sdk/l_sdk_status.md)
+### [6. 修改记录](https://github.com/lishaoliang/l_sdk_doc/blob/master/demo/inc/l_sdk_history.h)
 
 ## 二、NSPP协议概述
 
@@ -35,7 +36,9 @@
 ### [1. 客户端请求服务端升级](https://github.com/lishaoliang/l_sdk_doc/blob/master/upgrade/upgrade.md)
 
 ## 示例
-
+### [1. C语言示例](https://github.com/lishaoliang/l_sdk_doc/blob/master/demo/cpp/stream/t_stream_dec.c)
+### [2. 安卓示例](https://github.com/lishaoliang/l_sdk_doc/blob/master/demo/cpp/NdkAndroid/app/src/main/cpp/native-lib.cpp)
+### [3. iOS示例](https://github.com/lishaoliang/l_sdk_doc/blob/master/demo/cpp/tios_l_sdk/tios_l_sdk/l_sdkm.mm)
 
 ## 其他
 ### [Markdown简易参考](https://github.com/lishaoliang/l_sdk_doc/blob/master/markdown.md)
