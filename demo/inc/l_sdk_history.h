@@ -17,14 +17,18 @@
 /*
 
 
--- TIME: 2019/7/1
+-- TIME: 2019/7/1   ~   2019/7/5
++ 支持iOS版本
 + demo创建显示窗口支持传入: 解码器ID, 初始窗口宽, 初始窗口高, 窗口标题
+m 修正l_sdk_logout之后,没有关闭socket的Bug
+m 修正l_sdk_login到不存在的IP时,没有关闭socket的Bug
+- 去除显示部分接口: 因各个平台显示差异大, 兼容性问题
 
 
 -- TIME: 2019/6/19
 + 解码器模块支持传入json参数字段"pix_fmt",设定解码之后目标像素格式
 
-- Python
+-- Python
 + 添加Python版本接口封装(仅支持Win64)
 + 添加解码图像接口,输出numpy格式数据,可直接作为opencv等数据源使用
 
