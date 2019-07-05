@@ -36,9 +36,17 @@
 ### [1. 客户端请求服务端升级](https://github.com/lishaoliang/l_sdk_doc/blob/master/upgrade/upgrade.md)
 
 ## 示例
-### [1. C语言示例](https://github.com/lishaoliang/l_sdk_doc/blob/master/demo/cpp/stream/t_stream_dec.c)
+### [1. Win示例](https://github.com/lishaoliang/l_sdk_doc/blob/master/demo/cpp/stream/t_stream_dec.c)
+* l_sdk库32: https://github.com/lishaoliang/l_sdk_doc/tree/master/release/msc-win32
+* l_sdk库64: https://github.com/lishaoliang/l_sdk_doc/tree/master/release/msc-x64
+
 ### [2. 安卓示例](https://github.com/lishaoliang/l_sdk_doc/blob/master/demo/cpp/NdkAndroid/app/src/main/cpp/native-lib.cpp)
+* ffmpeg参考库: https://github.com/lishaoliang/ffmpeg/tree/master/lib-android
+* l_sdk库: https://github.com/lishaoliang/l_sdk_doc/tree/master/release/android-libs
+
 ### [3. iOS示例](https://github.com/lishaoliang/l_sdk_doc/blob/master/demo/cpp/tios_l_sdk/tios_l_sdk/l_sdkm.mm)
+* ffmpeg参考库: https://github.com/lishaoliang/ffmpeg/tree/master/lib-iOS
+* l_sdk库: https://github.com/lishaoliang/l_sdk_doc/tree/master/release/ios-libs
 
 ## 其他
 ### [Markdown简易参考](https://github.com/lishaoliang/l_sdk_doc/blob/master/markdown.md)
