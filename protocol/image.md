@@ -477,3 +477,66 @@
   }
 }
 ```
+
+
+### 14. 设置图像曝光
+* v1.0.13
+* 请求
+
+```javascript
+{
+  cmd : 'set_img_exposure',
+  llssid : '123456',
+  llauth : '123456',
+  set_img_exposure : {
+    chnn : 0,
+    compensation : 56
+  }
+}
+```
+
+|   参数       |   类型   |   默认值  |   备注    |
+|:------------:|:-------- |:--------- |:--------- |
+| chnn         | 数值     | 0         | 通道 |
+| compensation | 数值     | 56        | 自动曝光调整时的目标亮度[0,255] |
+
+* 回复
+
+```javascript
+{
+  cmd : 'set_img_exposure',
+  set_img_exposure : {
+    code : 0
+  }
+}
+```
+
+
+### 15. 获取图像曝光
+* v1.0.13
+* 获取默认 图像的镜像翻转: 'default_img_exposure'
+* 请求
+
+```javascript
+{
+  cmd : 'img_exposure',
+  llssid : '123456',
+  llauth : '123456',
+  img_exposure : {
+    chnn : 0
+  }
+}
+```
+
+* 回复
+
+```javascript
+{
+  cmd : 'img_exposure',
+  img_exposure : {
+    code : 0,
+    chnn : 0,
+    compensation : 56
+  }
+}
+```
