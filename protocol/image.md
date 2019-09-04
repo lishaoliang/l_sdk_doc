@@ -514,7 +514,7 @@
 
 ### 15. 获取图像曝光
 * v1.0.13
-* 获取默认 图像的镜像翻转: 'default_img_exposure'
+* 获取默认图像曝光: 'default_img_exposure'
 * 请求
 
 ```javascript
