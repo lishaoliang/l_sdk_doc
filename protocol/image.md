@@ -536,7 +536,13 @@
   img_exposure : {
     code : 0,
     chnn : 0,
-    compensation : 56
+    compensation : 56,
+    range : {
+      compensation : {
+        min : 0,
+        max : 255
+      }
+    }
   }
 }
 ```
