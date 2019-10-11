@@ -50,7 +50,12 @@
 
 
 ## 七、客户端软件
-### [1. 安卓软件](https://fir.im/v8h6)
+
+### [1. Windows客户端](https://fir.im/v8h6)
+* 32位,x86: https://github.com/lishaoliang/l_sdk_doc/blob/master/release/client-win/SLNetClient_install_x86.zip
+* 64位,x64: https://github.com/lishaoliang/l_sdk_doc/blob/master/release/client-win/SLNetClient_install_x64.zip
+
+### [2. 安卓客户端](https://fir.im/v8h6)
 
 ![image](https://github.com/lishaoliang/l_sdk_doc/blob/master/qr_code/android_app.jpg)
 
