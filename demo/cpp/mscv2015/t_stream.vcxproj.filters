@@ -4,6 +4,12 @@
     <Filter Include="stream">
       <UniqueIdentifier>{54267340-d1d2-44b0-921f-d6362946e010}</UniqueIdentifier>
     </Filter>
+    <Filter Include="sdk">
+      <UniqueIdentifier>{e9ab4bfa-a248-43f6-9d19-68575375153c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="sdk\proto">
+      <UniqueIdentifier>{2cfdca43-cdb1-4443-84ac-e7da691a1b34}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\stream\t_stream.c">
@@ -15,5 +21,52 @@
     <ClCompile Include="..\stream\main.c">
       <Filter>stream</Filter>
     </ClCompile>
+    <ClCompile Include="..\stream\t_stream_pic.c">
+      <Filter>stream</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\inc\l_sdk.h">
+      <Filter>sdk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\inc\l_sdk_dec.h">
+      <Filter>sdk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\inc\l_sdk_define.h">
+      <Filter>sdk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\inc\l_sdk_discover.h">
+      <Filter>sdk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\inc\l_sdk_err.h">
+      <Filter>sdk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\inc\l_sdk_history.h">
+      <Filter>sdk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\inc\l_sdk_media.h">
+      <Filter>sdk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\inc\l_sdk_picture.h">
+      <Filter>sdk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\inc\proto\l_md_buf.h">
+      <Filter>sdk\proto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\inc\proto\l_md_data.h">
+      <Filter>sdk\proto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\inc\proto\l_media.h">
+      <Filter>sdk\proto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\inc\proto\l_net.h">
+      <Filter>sdk\proto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\inc\proto\l_nspp.h">
+      <Filter>sdk\proto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\inc\proto\l_type.h">
+      <Filter>sdk\proto</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
