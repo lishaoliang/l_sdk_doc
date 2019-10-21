@@ -1,4 +1,4 @@
-## 六、访问媒体数据接口
+## 六、图片处理接口
 
 ```
 /// @struct l_sdk_picture_frame_t
