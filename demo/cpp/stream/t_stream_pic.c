@@ -102,11 +102,16 @@ int t_stream_pic_main(int argc, char *argv[])
                 int pic_len = p_buf->end - p_buf->start;
 
 #if 1
+                int w = 0, h = 0;
+                l_sdk_picture_size(p_pic, pic_len, 7, &w, &h);
+                printf("(%s,%d)src jpeg size:[%d,%d]\n", __FILE__, __LINE__, w, h);
+
                 l_sdk_picture_frame_t frame = { 0 };
                 frame.w = 1920;
                 frame.h = 1080;
 
-                if (0 == l_sdk_picture_resize(p_pic, pic_len, 7, &frame, 6, 7))
+                if ((frame.w != w || frame.h != h) && 
+                    0 == l_sdk_picture_resize(p_pic, pic_len, 7, &frame, 6, 7))
                 {
                     if (0 == save_jpeg(jpeg_path, frame.p_buffer, frame.data_length))
                     {

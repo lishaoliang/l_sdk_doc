@@ -33,6 +33,19 @@ typedef struct l_sdk_picture_frame_t_
 }l_sdk_picture_frame_t;
 
 
+/// @brief 函数描述
+/// @param [in]  *p_pic      输入压缩图片数据
+/// @param [in]  pic_len     输入压缩图片数据长度
+/// @param [in]  pic_type    输入压缩图片数据类型: 参考 ffmpeg.AVCodecID; AV_CODEC_ID_MJPEG=7
+/// @param [out] *p_out_w    输出图片宽
+/// @param [out] *p_out_h    输出图片高
+/// @return int 0.成功; 非0.错误码
+///  \n L_SDK_ERR_PARAM.输出参数错误
+///  \n L_SDK_ERR_OPEN.数据等异常导致编解码器无法打开
+///  \n L_SDK_ERR_NO_DATA.数据读取错误, 无法获取宽高
+L_SDK_API int l_sdk_picture_size(const char* p_pic, int pic_len, int pic_type, int* p_out_w, int* p_out_h);
+
+
 /// @brief 对一张压缩图片进行缩放操作
 /// @param [in] *p_pic           输入压缩图片数据
 /// @param [in] pic_len          输入压缩图片数据长度
