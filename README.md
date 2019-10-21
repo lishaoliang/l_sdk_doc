@@ -8,7 +8,9 @@
 ### [3. 网络发现](https://github.com/lishaoliang/l_sdk_doc/blob/master/sdk/l_sdk_discover.md)
 ### [4. 设备升级](https://github.com/lishaoliang/l_sdk_doc/blob/master/sdk/l_sdk_upgrade.md)
 ### [5. 状态查询](https://github.com/lishaoliang/l_sdk_doc/blob/master/sdk/l_sdk_status.md)
-### [6. 修改记录](https://github.com/lishaoliang/l_sdk_doc/blob/master/demo/inc/l_sdk_history.h)
+### [6. 图片处理](https://github.com/lishaoliang/l_sdk_doc/blob/master/sdk/l_sdk_picture.md)
+### [7. 修改记录](https://github.com/lishaoliang/l_sdk_doc/blob/master/demo/inc/l_sdk_history.h)
+
 
 ## 二、NSPP协议概述
 
@@ -36,15 +38,18 @@
 ### [1. 客户端请求服务端升级](https://github.com/lishaoliang/l_sdk_doc/blob/master/upgrade/upgrade.md)
 
 ## 六、示例
-### [1. Win示例](https://github.com/lishaoliang/l_sdk_doc/blob/master/demo/cpp/stream/t_stream_dec.c)
+### [1. 头文件目录](https://github.com/lishaoliang/l_sdk_doc/tree/master/demo/inc)
+* 头文件: https://github.com/lishaoliang/l_sdk_doc/tree/master/demo/inc
+
+### [2. Win示例](https://github.com/lishaoliang/l_sdk_doc/blob/master/demo/cpp/stream/t_stream_dec.c)
 * l_sdk库32: https://github.com/lishaoliang/l_sdk_doc/tree/master/release/msc-win32
 * l_sdk库64: https://github.com/lishaoliang/l_sdk_doc/tree/master/release/msc-x64
 
-### [2. 安卓示例](https://github.com/lishaoliang/l_sdk_doc/blob/master/demo/cpp/NdkAndroid/app/src/main/cpp/native-lib.cpp)
+### [3. 安卓示例](https://github.com/lishaoliang/l_sdk_doc/blob/master/demo/cpp/NdkAndroid/app/src/main/cpp/native-lib.cpp)
 * ffmpeg参考库: https://github.com/lishaoliang/ffmpeg/tree/master/lib-android
 * l_sdk库: https://github.com/lishaoliang/l_sdk_doc/tree/master/release/android-libs
 
-### [3. iOS示例](https://github.com/lishaoliang/l_sdk_doc/blob/master/demo/cpp/tios_l_sdk/tios_l_sdk/l_sdkm.mm)
+### [4. iOS示例](https://github.com/lishaoliang/l_sdk_doc/blob/master/demo/cpp/tios_l_sdk/tios_l_sdk/l_sdkm.mm)
 * ffmpeg参考库: https://github.com/lishaoliang/ffmpeg/tree/master/lib-iOS
 * l_sdk库: https://github.com/lishaoliang/l_sdk_doc/tree/master/release/ios-libs
 

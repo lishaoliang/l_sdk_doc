@@ -33,7 +33,7 @@ typedef struct l_sdk_picture_frame_t_
 }l_sdk_picture_frame_t;
 
 
-/// @brief 函数描述
+/// @brief 获取压缩图片尺寸
 /// @param [in]  *p_pic      输入压缩图片数据
 /// @param [in]  pic_len     输入压缩图片数据长度
 /// @param [in]  pic_type    输入压缩图片数据类型: 参考 ffmpeg.AVCodecID; AV_CODEC_ID_MJPEG=7
