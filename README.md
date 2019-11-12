@@ -24,8 +24,9 @@
 ### [7. 网络](https://github.com/lishaoliang/l_sdk_doc/blob/master/protocol/net.md)
 ### [8. 媒体流](https://github.com/lishaoliang/l_sdk_doc/blob/master/protocol/stream.md)
 ### [9. 图像参数](https://github.com/lishaoliang/l_sdk_doc/blob/master/protocol/image.md)
-### [10. 配置操作](https://github.com/lishaoliang/l_sdk_doc/blob/master/protocol/config.md)
-### [11. 控制协议](https://github.com/lishaoliang/l_sdk_doc/blob/master/protocol/sys.md)
+### [10. OSD参数](https://github.com/lishaoliang/l_sdk_doc/blob/master/protocol/osd.md)
+### [11. 配置操作](https://github.com/lishaoliang/l_sdk_doc/blob/master/protocol/config.md)
+### [12. 控制协议](https://github.com/lishaoliang/l_sdk_doc/blob/master/protocol/sys.md)
 ### [附录1、错误码](https://github.com/lishaoliang/l_sdk_doc/blob/master/protocol/net_err.md)
 ### [附录3、流序号](https://github.com/lishaoliang/l_sdk_doc/blob/master/protocol/stream_idx.md)
 ### [附录4、流格式](https://github.com/lishaoliang/l_sdk_doc/blob/master/protocol/stream_fmt.md)
@@ -37,7 +38,11 @@
 ## 五、升级子协议
 ### [1. 客户端请求服务端升级](https://github.com/lishaoliang/l_sdk_doc/blob/master/upgrade/upgrade.md)
 
-## 六、示例
+
+## 六、本地协议接口
+
+
+## 七、示例
 ### [1. 头文件目录](https://github.com/lishaoliang/l_sdk_doc/tree/master/demo/inc)
 * 头文件: https://github.com/lishaoliang/l_sdk_doc/tree/master/demo/inc
 
@@ -54,7 +59,7 @@
 * l_sdk库: https://github.com/lishaoliang/l_sdk_doc/tree/master/release/ios-libs
 
 
-## 七、客户端软件
+## 八、客户端软件
 
 ### [1. Windows客户端](https://fir.im/v8h6)
 * 32位,x86: https://github.com/lishaoliang/l_sdk_doc/blob/master/release/client-win/SLNetClient_install_x86.zip

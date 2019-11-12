@@ -231,10 +231,49 @@
 }
 ```
 
-### 8. 获取NTP校时
-* 不支持
+### 8. 设置NTP校时
+* v1.1.1
 
-* 获取NTP校时: 'default_ntp'
+* 请求
+
+```javascript
+{
+  cmd : 'set_ntp',
+  llssid : '123456',
+  llauth : '123456',
+  set_ntp : {
+    enable : false,
+    server : 'ntp1.aliyun.com',
+    port : 123,
+    interval : ‭604800‬
+  }
+}
+```
+
+* 回复
+
+```javascript
+{
+  cmd : 'set_ntp',
+  set_ntp : {
+    code : 0
+  }
+}
+```
+
+|  值域     | 类型        |   备注    |
+|:---------:|:---------- |:--------- |
+| code      | 数值(r)     | 错误码 |
+| enable    | 布尔(rw)    | 是否使能NTP |
+| server    | 字符串(rw)  | NTP服务器IPv4或域名 |
+| port      | 数值(rw)    | NTP服务器端口 |
+| interval  | 数值(rw)    | NTP校时时间间隔(单位秒) |
+
+
+### 9. 获取NTP校时
+* v1.1.1
+
+* 获取默认NTP校时: 'default_ntp'
 * 请求
 
 ```javascript
@@ -255,42 +294,32 @@
     enable : false,
     server : 'ntp1.aliyun.com',
     port : 123,
-    interval : '1H',
+    interval : ‭604800‬,
     range {
-      server : {
-        {'ntp1.aliyun.com', '123'},
-        {'ntp2.aliyun.com', '123'}
-      },
-      interval : {'12H', '6H', '4H', '2H', '1H', '30M', '20M', '10M'}
+      server : {'ntp1.aliyun.com', 'ntp2.aliyun.com'},
+      interval : {
+        min : 3600,
+        max : 5184000
+      }
     }
   }
 }
 ```
 
-|  值域     | 类型        |   备注    |
-|:---------:|:---------- |:--------- |
-| code      | 数字(r)     | 错误码 |
-| enable    | 布尔(rw)    | 是否使能NTP |
-| server    | 字符串(rw)  | NTP服务器 |
-| port      | 数字(rw)    | NTP服务器端口 |
-| interval  | 字符串(rw)  | NTP校时时间间隔 |
 
-
-### 9. 设置NTP校时
-* 不支持
+### 10. 立即进行NTP校时
+* v1.1.1
 
 * 请求
 
 ```javascript
 {
-  cmd : 'set_ntp',
+  cmd : 'ntp_sync',
   llssid : '123456',
   llauth : '123456',
-  set_ntp : {
-    enable : false,
+  ntp_sync : {
     server : 'ntp1.aliyun.com',
     port : 123,
-    interval : '1H'
   }
 }
 ```
@@ -299,8 +328,8 @@
 
 ```javascript
 {
-  cmd : 'set_ntp',
-  set_ntp : {
+  cmd : 'ntp_sync',
+  ntp_sync : {
     code : 0
   }
 }
