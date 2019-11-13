@@ -295,16 +295,24 @@
     server : 'ntp1.aliyun.com',
     port : 123,
     interval : ‭604800‬,
-    range {
-      server : {'ntp1.aliyun.com', 'ntp2.aliyun.com'},
+    range : {
+      port : {
+        min : 1,
+        max : 65536
+      },
       interval : {
         min : 3600,
         max : 5184000
       }
+    },
+    recommend : {
+      server : {'ntp1.aliyun.com', 'ntp2.aliyun.com'}
     }
   }
 }
 ```
+
+* ntp.recommend.server : {...} 表示推荐使用的时间同步服务器
 
 
 ### 10. 立即进行NTP校时
