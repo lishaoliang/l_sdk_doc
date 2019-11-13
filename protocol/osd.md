@@ -12,6 +12,7 @@
   llssid : '123456',
   llauth : '123456',
   set_osd_timestamp : {
+    chnn : 0,
     enable : false,
     format : 'YY-MM-DD HH:MM:SS.3',
     pos : 'right,top',
@@ -51,6 +52,9 @@
   cmd : 'osd_timestamp',
   llssid : '123456',
   llauth : '123456',
+  osd_timestamp : {
+    chnn : 0,
+  }
 }
 ```
 
@@ -61,6 +65,7 @@
   cmd : 'osd_timestamp',
   osd_timestamp : {
     code : 0,
+    chnn : 0,
     enable : false,
     format : 'YY-MM-DD HH:MM:SS.3',
     pos : 'right,top',

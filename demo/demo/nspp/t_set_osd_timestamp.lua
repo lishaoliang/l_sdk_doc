@@ -1,10 +1,10 @@
 --[[
 -- Copyright (c) 2019 Œ‰∫∫À¥¡¢»Ìº˛, All Rights Reserved
--- Created: 2019/3/6
+-- Created: 2019/11/13
 --
--- @brief	≤‚ ‘µ«¬º/µ«≥ˆ…Ë±∏
+-- @brief	≤‚ ‘…Ë÷√OSD ±º‰¥¡
 -- @author	¿Ó…‹¡º
--- @see https://github.com/lishaoliang/l_sdk_doc/blob/master/protocol/auth.md
+-- @see https://github.com/lishaoliang/l_sdk_doc/blob/master/protocol/osd.md
 --]]
 local l_sys = require("l_sys")
 local l_sdk = require("l_sdk")
@@ -30,15 +30,21 @@ else
 	print('login ok!'.. 'id=' .. id, target.username .. '@' .. target.ip .. ':'..target.port)
 end
 
-
-local support = {
-	cmd = 'support',
+local osd_timestamp = {
+	cmd = 'set_osd_timestamp',
 	--llssid = '123456',
-	--llauth = '123456'
+	--llauth = '123456',
+	set_osd_timestamp = {
+		chnn = 0,
+		enable = false,
+		format = 'YY-MM-DD HH:MM:SS.3',
+		pos = 'right,top',
+		font_size = 'middle'
+	}
 }
 
-local ret, res = l_sdk.request(id, to_json(support))
-print('request support, ret='..ret, 'res='..res)
+local ret, res = l_sdk.request(id, to_json(osd_timestamp))
+print('request set_osd_timestamp, ret='..ret, 'res='..res)
 
 
 -- –›√ﬂ3S

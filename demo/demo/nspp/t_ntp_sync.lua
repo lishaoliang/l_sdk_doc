@@ -1,10 +1,10 @@
 --[[
 -- Copyright (c) 2019 武汉舜立软件, All Rights Reserved
--- Created: 2019/3/6
+-- Created: 2019/11/13
 --
--- @brief	测试登录/登出设备
+-- @brief	测试进行NTP同步
 -- @author	李绍良
--- @see https://github.com/lishaoliang/l_sdk_doc/blob/master/protocol/auth.md
+-- @see https://github.com/lishaoliang/l_sdk_doc/blob/master/protocol/base.md
 --]]
 local l_sys = require("l_sys")
 local l_sdk = require("l_sdk")
@@ -30,15 +30,18 @@ else
 	print('login ok!'.. 'id=' .. id, target.username .. '@' .. target.ip .. ':'..target.port)
 end
 
-
-local support = {
-	cmd = 'support',
+local sync = {
+	cmd = 'ntp_sync',
 	--llssid = '123456',
-	--llauth = '123456'
+	--llauth = '123456',
+	ntp_sync = {
+		server = 'ntp1.aliyun.com',
+		port = 123
+	}
 }
 
-local ret, res = l_sdk.request(id, to_json(support))
-print('request support, ret='..ret, 'res='..res)
+local ret, res = l_sdk.request(id, to_json(sync))
+print('request ntp_sync, ret='..ret, 'res='..res)
 
 
 -- 休眠3S
