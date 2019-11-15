@@ -89,7 +89,8 @@ int l_sdk_login(int* p_id, const char* p_param);
 ```
 /// @param [out] *p_id  如果登入成功, 则输出ID值
 /// @param [in] *p_param  登录参数
-示例：p_param =
+
+示例1：p_param =
 {
   ip : '192.168.1.247',
   port : 80,
@@ -98,6 +99,18 @@ int l_sdk_login(int* p_id, const char* p_param);
     passwd : '123456'
   }
 }
+
+示例1：p_param =
+{
+  protocol : 'nspp',        // 'nspp', 'rtsp'
+  ip : '192.168.1.247',
+  port : 80,
+  login : {
+    username : 'admin',
+    passwd : '123456'
+  }
+}
+
 ```
 
 * 返回值

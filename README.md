@@ -39,8 +39,8 @@
 ### [1. 客户端请求服务端升级](https://github.com/lishaoliang/l_sdk_doc/blob/master/upgrade/upgrade.md)
 
 
-## 六、本地协议接口
-
+## 六、本地协议
+### [1. 本地协议接口](https://github.com/lishaoliang/l_sdk_doc/blob/master/lif/lif.md)
 
 ## 七、示例
 ### [1. 头文件目录](https://github.com/lishaoliang/l_sdk_doc/tree/master/demo/inc)
