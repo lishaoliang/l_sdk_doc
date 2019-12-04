@@ -53,11 +53,11 @@ with l_sdk.c(ip = tg.ip,
             print('default_' + k + ' :', a.get_default(k))
 
     # 视频流
-    for i in range(0, 1):
+    for i in range(0, 2):
         print('stream' + ' :', a.get('stream', idx=i))
         print('default_' + 'stream' + ' :', a.get_default('stream', idx=i))
 
     # 图片流
-    for i in range(64, 65):
+    for i in range(64, 66):
         print('stream_pic' + ' :', a.get('stream_pic', idx=i))
         print('default_' + 'stream_pic' + ' :', a.get_default('stream_pic', idx=i))

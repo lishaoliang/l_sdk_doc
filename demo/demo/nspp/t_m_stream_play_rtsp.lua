@@ -58,20 +58,17 @@ l_sdk.init('')
 -- 若每路6M, 则可以拉取130-140路流
 local count = 60
 
+
+--  rtsp主码流: rtsp://admin:123456@192.168.1.247:80/chnn0/idx0
+--  rtsp子码流: rtsp://admin:123456@192.168.1.247:80/chnn0/idx1
+--  rtsp默认子码流: rtsp://admin:123456@192.168.1.247:80
+
 local chnn = 0
-local idx = 0		-- 0.主码流, 1.子码流
+local idx = 0	-- 0.主码流, 1.子码流
 
-local rtsp_id = function (idx)
-	if 0 ~= idx then
-		return 0 -- 子码流 rtsp0
-	end
-	
-	return 1 -- 主码流 rtsp1
-end
-
--- '/chnn=0&id=1'
--- '/chnn=0&id=0'
-local path = string.format('/chnn=%d&id=%d', chnn, rtsp_id(idx))
+-- '/chnn0/idx0'
+-- '/chnn0/idx1'
+local path = string.format('/chnn%d/idx%d', chnn, idx)
 
 
 local err, id = m_stream(count, chnn, idx, path);
