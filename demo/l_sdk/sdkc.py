@@ -6,6 +6,7 @@
 //
 /// @file    sdkc.py
 /// @brief   sdk class接口
+/// @author  李绍良
 /// @version 1.0.11
 ///////////////////////////////////////////////////////////////////////////
 """
@@ -16,17 +17,38 @@ import l_sdk
 
 
 class sdkc:
-    def __init__(self, *, cfg={}, req=None, ip='192.168.1.247', port=80, username='admin', passwd='123456'):
+    def __init__(self, *, cfg={}, req=None, ip='192.168.1.247', port=80, username='admin', passwd='123456',
+                protocol='nspp', method='GET', path='/', host=None):
+        """
+        /// @brief 构造
+        /// @param [in] cfg         sdk初始配置(第一次生效)
+        /// @param [in] ip          目标IP
+        /// @param [in] port        目标端口
+        /// @param [in] username    用户名
+        /// @param [in] passwd      密码
+        /// @param [in] protocol    协议名称: 'nspp', 'rtsp', 'http_flv', 'http_nspp'
+        /// @param [in] method      HTTP方法: 'GET', 'POST'
+        /// @param [in] path        请求路径: '/'
+        /// @param [in] host        请求的主机域名或ip: 'www.xxx.com'
+        """
         try:
             self.m_ip = req['ip']
             self.m_port = req['port']
             self.m_username = req['login']['username']
             self.m_passwd = req['login']['passwd']
+            self.m_protocol = req['protocol'] or 'nspp'
+            self.m_method = req['method'] or 'GET'
+            self.m_path = req['path'] or '/'
+            self.m_host = req['host'] or req['ip']
         except Exception as e:
             self.m_ip = ip
             self.m_port = port
             self.m_username = username
             self.m_passwd = passwd
+            self.m_protocol = protocol or 'nspp'
+            self.m_method = method or 'GET'
+            self.m_path = path or '/'
+            self.m_host = host or ip
 
         self.m_login_id = 0
         self.streams = []
@@ -71,7 +93,8 @@ class sdkc:
         /// @return 无
         """
         self.logout()
-        self.m_login_id = l_sdk.login(ip = self.m_ip, port = self.m_port, username = self.m_username, passwd = self.m_passwd)
+        self.m_login_id = l_sdk.login(ip = self.m_ip, port = self.m_port, username = self.m_username, passwd = self.m_passwd,
+                                    protocol = self.m_protocol, method = self.m_method, path = self.m_path, host = self.m_host)
         #print('login', self.m_login_id)
 
 
@@ -210,13 +233,15 @@ class sdkc:
             }
         }
         
-        code = 0    
-        try:
-            s = self.request(req)['open_stream']
-            code = s['code']
+        code = 0
 
-        except Exception as e:
-            code = -1
+        if 'nspp' == self.m_protocol :
+            try:
+                s = self.request(req)['open_stream']
+                code = s['code']
+
+            except Exception as e:
+                code = -1
 
         if 0 == code :
             if 0 < dec_id :
@@ -232,6 +257,7 @@ class sdkc:
             #print(self.stream)
 
         return code
+
 
     def close_stream(self, *, chnn=0, idx=0, md_id=0):
         """
@@ -251,12 +277,13 @@ class sdkc:
             }
         }
 
-        try:
-            s = self.request(req)['close_stream']
-            return s['code']
+        if 'nspp' == self.m_protocol :
+            try:
+                s = self.request(req)['close_stream']
+                return s['code']
 
-        except Exception as e:
-            return -1
+            except Exception as e:
+                return -1
 
 
     def get_stream(self, *, chnn=0, idx=0, md_id=0):

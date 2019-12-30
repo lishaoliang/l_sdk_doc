@@ -31,6 +31,7 @@ typedef enum l_sdk_err_t_
     L_SDK_ERR_PARAM,            ///< 参数错误
     L_SDK_ERR_OPEN,             ///< 打开失败,或没有打开对应的对象
     L_SDK_ERR_NO_DATA,          ///< 无数据,或没有新数据刷新
+    L_SDK_ERR_REPEAT,           ///< 数据重复
 
     L_SDK_ERR_END = 0x0FFF
 }l_sdk_err_t;

@@ -1,8 +1,8 @@
 --[[
 -- Copyright (c) 2019 武汉舜立软件, All Rights Reserved
--- Created: 2019/11/21
+-- Created: 2019/12/26
 --
--- @brief	(RTSP协议)测试多路解码显示
+-- @brief	(HTTP-NSPP协议)测试多路解码显示
 -- @author	李绍良
 -- @see https://github.com/lishaoliang/l_sdk_doc/blob/master/protocol/stream.md
 --]]
@@ -12,25 +12,8 @@ local l_sdk = require("l_sdk")
 
 local target = require("demo.target")
 local to_json =  require("demo.to_json")
-local login_rtsp = require("demo.login_rtsp")
+local login = require("demo.login")
 
-local open_stream = function (id, chnn, idx)
-	local req = {
-		cmd = 'open_stream',
-		--llssid = '123456',	-- l_sdk自动将此域补充完成
-		--llauth = '123456',	-- l_sdk自动将此域补充完成
-		open_stream = {
-			chnn = chnn,
-			idx = idx
-		}
-	}
-	
-	local json = to_json(req)
-	--print('open stream:', json)
-	local err, res = l_sdk.request(id, json)
-
-	return err, res
-end
 
 local m_stream = function (num, ips, chnn, idx, path)
 	local ids = {}
@@ -39,11 +22,8 @@ local m_stream = function (num, ips, chnn, idx, path)
 	for i = 1, num do
 		-- 登录到设备
 		local ip = ips[i]
-		local err, id = login_rtsp(ip, target.port, path, target.username, target.passwd)
-		print('login_rtsp ret='..err .. ' id='..id)
-		
-		local ret, res = open_stream(id, chnn, idx)
-		print('open stream ret='..ret .. ' res='..res)
+		local err, id = login(ip, target.port, target.username, target.passwd, 'http_nspp', 'GET', path)
+		print('http_nspp login ret='..err .. ' id='..id)
 		
 		local dlg = l_sdk.open_wnd(100 + id, 400, 225, 'index : ' .. tostring(i) .. ' @' .. ip)	-- 打开窗口
 		dlg:bind(id, chnn, idx, 0)		-- 将窗口绑定到登录id, 通道, 流序号
@@ -78,21 +58,14 @@ end
 --			 '192.168.1.218', '192.168.1.218', '192.168.1.218', '192.168.1.218', '192.168.1.218'}
 
 
---  rtsp主码流: rtsp://admin:123456@192.168.1.247:80/chnn0/idx0
---  rtsp子码流: rtsp://admin:123456@192.168.1.247:80/chnn0/idx1
---  rtsp默认子码流: rtsp://admin:123456@192.168.1.247:80
-
 local chnn = 0
-local idx = 1	-- 0.主码流, 1.子码流
+local idx = 1		-- 主码流0, 子码流1
 
--- '/chnn0/idx0'
--- '/chnn0/idx1'
-local path = string.format('/chnn%d/idx%d', chnn, idx)
+-- '/luanspp/chnn0/idx0'
+-- '/luanspp/chnn0/idx1'
+local path = string.format('/luanspp/chnn%d/idx%d', chnn, idx)
 
-
--- 对于rtsp协议而言, 并没有通道/流序号区分
--- 具体是哪个流, 取决于path参数
-local ids, dlgs = m_stream(count, ips, 0, 0, path);
+local ids, dlgs = m_stream(count, ips, chnn, idx, path);
 
 
 -- 检查窗口是否关闭

@@ -148,20 +148,30 @@ def quit():
 
 
 
-def login(*, req=None, ip='192.168.1.247', port=80, username='admin', passwd='123456'):
+def login(*, req=None, ip='192.168.1.247', port=80, username='admin', passwd='123456',
+        protocol='nspp', method='GET', path='/', host=None):
     """
     /// @brief 登入到某个设备
     /// @param [in] req         字典形式的json数据
-    /// @param [in] ip          目标IP[obj = None]
-    /// @param [in] port        目标端口[obj = None]
-    /// @param [in] username    用户名[obj = None]
-    /// @param [in] passwd      密码[obj = None]
+    /// @param [in] ip          目标IP
+    /// @param [in] port        目标端口
+    /// @param [in] username    用户名
+    /// @param [in] passwd      密码
+    /// @param [in] protocol    协议名称: 'nspp', 'rtsp', 'http_flv', 'http_nspp'
+    /// @param [in] method      HTTP方法: 'GET', 'POST'
+    /// @param [in] path        请求路径: '/'
+    /// @param [in] host        请求的主机域名或ip: 'www.xxx.com'
     /// @return int 登录ID[1000, 0x7FFF0000]
     /// @note 
     ///  例如: obj={"ip":"192.168.1.247","port":80,"login":{"username":"admin","passwd":"123456"}}
     """
     if None == req :
         req = {
+            'protocol' : protocol or 'nspp',
+            'method' : method or 'GET',
+            'path' : path or '/',
+            'host' : host or ip,
+
             'ip' : ip,
             'port' : port,
             'login' : {

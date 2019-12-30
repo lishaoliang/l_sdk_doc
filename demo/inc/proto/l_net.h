@@ -4,10 +4,11 @@
 //
 /// @file    l_net.h
 /// @brief   网络部分公共定义,勿添加其他
-/// @version 0.1
+/// @version 0.2
 /// @author  李绍良
 /// @history 修改历史
 ///  \n 2018/11/22 0.1  创建文件
+///  \n 2019/12/11 0.2  添加网络协议定义:HTTP_FLV(通过http发送flv流), HTTP-NSPP(通过http发送nspp流), NSPP-LOCAL(nspp本地unix)
 /// @warning 没有警告
 ///////////////////////////////////////////////////////////////////////////
 #ifndef __L_NET_H__
@@ -97,19 +98,23 @@ typedef enum l_net_flag_e_
 ///  \n L_NET_NSPP子协议定义: l_nspp_sub_proto_e
 typedef enum l_net_protocol_e_
 {
-    L_NET_P_NULL = 0,       ///< 暂未找到协议
-    L_NET_UNKNOWN,          ///< 明确是未知协议
-    L_NET_HTTP,             ///< http[TCP]
-    L_NET_RTSP,             ///< rtsp[TCP]
-    L_NET_WS,               ///< websocket[TCP]
+    L_NET_P_NULL            = 0,        ///< 暂未找到协议
+    L_NET_UNKNOWN           = 1,        ///< 明确是未知协议
+    L_NET_HTTP              = 2,        ///< http[TCP]
+    L_NET_RTSP              = 3,        ///< rtsp[TCP]
+    L_NET_WS                = 4,        ///< websocket[TCP]
+    L_NET_HTTP_FLV          = 5,        ///< flv by http[TCP]
 
-    L_NET_NSPP = 20,        ///< nspp[TCP]: v1私有协议
-    L_NET_NSPP_MULTICAST,   ///< nspp组播[UDP]: v1私有组播, 仅供网络发现,精简文本协议,不得定义业务协议, 不得传输媒体流
-    L_NET_NSPP_BROADCAST,   ///< nspp广播[UDP]: v1私有广播, 仅供网络发现使用, 不得用于其他用途
+    L_NET_NSPP              = 20,       ///< nspp[TCP]: v1私有协议
+    L_NET_NSPP_MULTICAST    = 21,       ///< nspp组播[UDP]: v1私有组播, 仅供网络发现,精简文本协议,不得定义业务协议, 不得传输媒体流
+    L_NET_NSPP_BROADCAST    = 22,       ///< nspp广播[UDP]: v1私有广播, 仅供网络发现使用, 不得用于其他用途
+    L_NET_NSPP_HTTP         = 23,       ///< nspp[HTTP/TCP]: v1私有协议, 通过HTTP长连接传输媒体控制
 
-    L_NET_P_USER = 1000,    ///< 用户自定协议
+    L_NET_NSPP_LOCAL        = 820,      ///< 本地;nspp[unix,TCP]: v1私有协议
 
-    L_NET_P_END  = 0x7FFF   ///< 主协议结束
+    L_NET_P_USER            = 1000,     ///< 用户自定协议
+
+    L_NET_P_END             = 0x7FFF    ///< 主协议结束
 }l_net_protocol_e;
 
 

@@ -1,39 +1,19 @@
 --[[
 -- Copyright (c) 2019 武汉舜立软件, All Rights Reserved
--- Created: 2019/11/20
+-- Created: 2019/12/25
 --
--- @brief	测试使用RTSP协议播放码流
+-- @brief	测试获取 http_flv 码流
 -- @author	李绍良
 -- @see https://github.com/lishaoliang/l_sdk_doc/blob/master/protocol/stream.md
 --]]
-local string = require("string")
 local l_sys = require("l_sys")
 local l_sdk = require("l_sdk")
 
 
 local target = require("demo.target")
 local to_json =  require("demo.to_json")
-local login_rtsp = require("demo.login_rtsp")
+local login = require("demo.login")
 
-
-local open_stream = function (id, chnn, idx)
-	local req = {
-		cmd = 'open_stream',
-		--llssid = '123456',	-- l_sdk自动将此域补充完成
-		--llauth = '123456',	-- l_sdk自动将此域补充完成
-		open_stream = {
-			chnn = chnn,
-			idx = idx
-		}
-	}
-	
-	local json = to_json(req)
-	--print('open stream:', json)
-
-	local ret, res = l_sdk.request(id, json)
-
-	return ret, res
-end
 
 local conn_status = function (...)
 	local req = {
@@ -58,21 +38,16 @@ l_sdk.init('')
 
 --print(conn_status('1000', '1001', '1002'))
 
-
---  rtsp主码流: rtsp://admin:123456@192.168.1.247:80/chnn0/idx0
---  rtsp子码流: rtsp://admin:123456@192.168.1.247:80/chnn0/idx1
---  rtsp默认子码流: rtsp://admin:123456@192.168.1.247:80
-
 local chnn = 0
 local idx = 0	-- 0.主码流, 1.子码流
 
--- '/chnn0/idx0'
--- '/chnn0/idx1'
-local path = string.format('/chnn%d/idx%d', chnn, idx)
+-- '/luaflv/chnn0/idx0'
+-- '/luaflv/chnn0/idx1'
+local path = string.format('/luaflv/chnn%d/idx%d', chnn, idx)
 
 
 -- 登录到设备
-local err, id = login_rtsp(target.ip, target.port, path, target.username, target.passwd)
+local err, id = login(target.ip, target.port, target.username, target.passwd, 'http_flv', 'GET', path)
 
 
 -- 打印登录结果
@@ -82,18 +57,11 @@ else
 	print('login ok!'.. 'id=' .. id, target.username .. '@' .. target.ip .. ':'..target.port)
 end
 
-local err, res = open_stream(id, chnn, idx);
-if 0 ~= err then
-	print('open stream error!err='..err)
-	
-	-- 休眠3S
-	l_sys.sleep(3000)
-else
-	print('open stream ok!res='..res)
-	
+
+if 0 == err then
 	--  内置播放器,需要win支持Opengl2.0以上
 	local dlg = l_sdk.open_wnd()	-- 打开窗口
-	dlg:bind(id, chnn, idx, 0)		-- 将窗口绑定到登录id, 通道, 流序号
+	dlg:bind(id, 0, 0, 0)			-- 将窗口绑定到登录id, 通道, 流序号
 	
 	local cs_tc = 0
 	while dlg:is_run() do			-- 窗口是否关闭
